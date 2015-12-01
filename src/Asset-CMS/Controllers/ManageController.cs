@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
-using System.Security.Principal;
+//using System.Security.Policy;
+//using System.Security.Principal;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
@@ -354,9 +355,8 @@ namespace Asset_CMS.Controllers
 
         private async Task<ApplicationUser> GetCurrentUserAsync()
         {
-            //return await _userManager.FindByIdAsync(Context.User.GetUserId());
 
-            return new ApplicationUser();
+            return await _userManager.FindByIdAsync(HttpContext.User.GetUserId());
         }
 
         private IActionResult RedirectToLocal(string returnUrl)

@@ -4,7 +4,7 @@
   },
   "Data": {
     "DefaultConnection": {
-      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Asset_CMS-74518d02-f239-45a5-9320-836c65e2114e;Trusted_Connection=True;MultipleActiveResultSets=true"
+      "ConnectionString": "Server=.\\MSSQLSERVER2014;Database=Asset_CMS;Trusted_Connection=True;MultipleActiveResultSets=true"
     }
   }
 }
