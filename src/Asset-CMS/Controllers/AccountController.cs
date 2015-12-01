@@ -57,7 +57,7 @@ namespace Asset_CMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
-            //EnsureDatabaseCreated(_applicationDbContext);
+            EnsureDatabaseCreated(_applicationDbContext);
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace Asset_CMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            //EnsureDatabaseCreated(_applicationDbContext);
+            EnsureDatabaseCreated(_applicationDbContext);
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -132,7 +132,7 @@ namespace Asset_CMS.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult LogOff()
         {
-            //_signInManager.SignOut();
+            _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -143,7 +143,7 @@ namespace Asset_CMS.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
         {
-            //EnsureDatabaseCreated(_applicationDbContext);
+            EnsureDatabaseCreated(_applicationDbContext);
             // Request a redirect to the external login provider.
             var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl });
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
@@ -195,7 +195,7 @@ namespace Asset_CMS.Controllers
         {
             if (User.IsSignedIn())
             {
-                return RedirectToAction(nameof(ManageController.Index),"Manage");
+                return RedirectToAction(nameof(ManageController.Index), "Manage");
             }
 
             if (ModelState.IsValid)
@@ -440,14 +440,14 @@ namespace Asset_CMS.Controllers
         // not yet supported in this release.
         // Please see this http://go.microsoft.com/fwlink/?LinkID=615859 for more information on how to do deploy the database
         // when publishing your application.
-        //private static void EnsureDatabaseCreated(ApplicationDbContext context)
-        //{
-        //    if (!_databaseChecked)
-        //    {
-        //        _databaseChecked = true;
-        //        context.Database.AsRelational().ApplyMigrations();
-        //    }
-        //}
+        private static void EnsureDatabaseCreated(ApplicationDbContext context)
+        {
+            if (!_databaseChecked)
+            {
+                _databaseChecked = true;
+                context.Database.MigrateAsync();
+            }
+        }
 
         private void AddErrors(IdentityResult result)
         {
@@ -459,6 +459,7 @@ namespace Asset_CMS.Controllers
 
         //private async Task<ApplicationUser> GetCurrentUserAsync()
         //{
+            
         //    return await _userManager.FindByIdAsync(Context.User.GetUserId());
         //}
 
