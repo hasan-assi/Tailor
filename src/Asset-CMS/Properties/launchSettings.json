@@ -1,0 +1,11 @@
+{
+    "profiles": {
+       
+        "web": {
+            "commandName": "web",
+            "environmentVariables": {
+                "ASPNET_ENV": "Development"
+            }
+        }
+    }
+}
