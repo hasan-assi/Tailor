@@ -1,22 +1,32 @@
 {
   "name": "ASP.NET",
   "version": "0.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "main": "gulpfile.js",
   "devDependencies": {
+    "angular2": "2.0.0-alpha.44",
+    "event-stream": "^3.3.2",
     "gulp": "3.8.11",
     "gulp-concat": "2.5.2",
     "gulp-cssmin": "0.1.7",
+    "gulp-inline-ng2-template": "0.0.7",
+    "gulp-typescript": "^2.9.0",
     "gulp-uglify": "1.2.0",
     "live-server": "^0.8.2",
     "rimraf": "2.2.8",
     "typescript": "^1.7.3"
   },
-  "main": "gulpfile.js",
   "dependencies": {
     "angular2": "2.0.0-alpha.44",
+    "es6-shim": "^0.33.13",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
     "gulp-cssmin": "^0.1.7",
     "gulp-uglify": "^1.2.0",
+    "jquery": "^2.1.4",
     "rimraf": "^2.2.8",
     "systemjs": "0.19.2"
   },
@@ -24,9 +34,5 @@
     "tsc": "tsc -p src -w",
     "start": "live-server --open=src",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
