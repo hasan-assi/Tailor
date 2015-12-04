@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Asset_CMS.DAL;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Asset_CMS.Models;
 using Asset_CMS.Services;
+using Asset_CMS.TestDI;
 
 namespace Asset_CMS
 {
@@ -45,8 +47,9 @@ namespace Asset_CMS
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-                    //options.UseSqlite(Configuration["Data:DefaultConnection:ConnectionString"]));
+                    options.UseSqlServer(Configuration["Data:IdentityConnection:ConnectionString"])).
+                AddDbContext<AssetDbContext>(
+                    option => option.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -57,6 +60,14 @@ namespace Asset_CMS
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddScoped<IAssetRepository, AssetRepository>();
+
+            services.AddScoped<OperationService, OperationService>();
+            services.AddTransient<IOperationTransient, Operation>();
+            services.AddScoped<IOperationScoped, Operation>();
+            services.AddSingleton<IOperationSingleton, Operation>();
+            services.AddInstance<IOperationInstance>(new Operation());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +75,7 @@ namespace Asset_CMS
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -88,7 +99,7 @@ namespace Asset_CMS
             }
 
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
-
+       
             app.UseStaticFiles();
 
             app.UseIdentity();
@@ -100,7 +111,7 @@ namespace Asset_CMS
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            });     
         }
 
         // Entry point for the application.

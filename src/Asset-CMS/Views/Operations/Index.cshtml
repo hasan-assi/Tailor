@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+      ViewBag.Transient = _transientOperation;
+            ViewBag.Scoped = _scopedOperation;
+            ViewBag.Singleton = _singletonOperation;
+            ViewBag.Instance = _instanceOperation;
+ViewBag.Service = _operationService;
+
+<div>
+    <h3>Controller:</h3>
+    <span>Transient:</span><span>@ViewBag.Transient.OperationId</span><br/>
+    <span>Scoped:</span><span>@ViewBag.Scoped.OperationId</span><br />
+    <span>Singleton:</span><span>@ViewBag.Singleton.OperationId</span><br />
+    <span>Instance:</span><span>@ViewBag.Instance.OperationId</span>
+</div>
+<div >
+    <h3>Operation Service:</h3>
+    <span>Transient:</span><span>@ViewBag.Service.TransientOperation.OperationId</span><br />
+    <span>Scoped:</span><span>@ViewBag.Service.ScopedOperation.OperationId</span><br />
+    <span>Singleton:</span><span>@ViewBag.Service.SingletonOperation.OperationId</span><br />
+    <span>Instance:</span><span>@ViewBag.Service.InstanceOperation.OperationId</span>
+</div>
