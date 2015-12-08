@@ -1,0 +1,10 @@
+var Asset = (function () {
+    function Asset(id, msn) {
+        this.id = id;
+        this.msn = msn;
+    }
+    return Asset;
+})();
+exports.Asset = Asset;
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hc3NldHMvYXNzZXQudHMiXSwibmFtZXMiOlsiQXNzZXQiLCJBc3NldC5jb25zdHJ1Y3RvciJdLCJtYXBwaW5ncyI6IkFBQ0E7SUFDSUEsZUFDV0EsRUFBVUEsRUFDVkEsR0FBV0E7UUFEWEMsT0FBRUEsR0FBRkEsRUFBRUEsQ0FBUUE7UUFDVkEsUUFBR0EsR0FBSEEsR0FBR0EsQ0FBUUE7SUFBSUEsQ0FBQ0E7SUFDL0JELFlBQUNBO0FBQURBLENBSkEsQUFJQ0EsSUFBQTtBQUpZLGFBQUssUUFJakIsQ0FBQSIsImZpbGUiOiJhcHAvYXNzZXRzL2Fzc2V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG5leHBvcnQgY2xhc3MgQXNzZXQge1xuICAgIGNvbnN0cnVjdG9yKFxuICAgICAgICBwdWJsaWMgaWQ6IG51bWJlcixcbiAgICAgICAgcHVibGljIG1zbjogc3RyaW5nKSB7IH1cbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
