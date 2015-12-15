@@ -1,0 +1,2 @@
+bower can not restore packages
+	git config --global url."https://".insteadOf git://
