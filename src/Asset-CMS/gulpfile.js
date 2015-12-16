@@ -8,6 +8,7 @@ var eventStream = require('event-stream');
 var typescript = require('gulp-typescript');
 var inlineNg2Template = require('gulp-inline-ng2-template');
 var sourcemaps = require('gulp-sourcemaps');
+var bower = require('gulp-bower');
 
 var project = require("./project.json");
 var webroot = "./wwwroot/";
@@ -40,6 +41,12 @@ gulp.task('build-prod', ['build.lib'], function () {
         .pipe(typescript(tsProject))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(webroot));
+});
+
+//no called yet.
+gulp.task('bower', function () {
+    return bower()
+      .pipe(gulp.dest('lib/'))
 });
 
 gulp.task('build-dev', ['build.lib'], function () {
