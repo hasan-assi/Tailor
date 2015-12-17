@@ -6,12 +6,12 @@ import 'rxjs/add/operator/catch';
 
 @Component({
     selector: 'app',
-    templateUrl: './app/app.html',
-    styleUrls: ['./app/app.css'],
+    templateUrl: './app/app.component.html',
+    styleUrls: ['./app/app.component.css'],
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig(APP_ROUTES)
-export class App {
+export class AppComponent {
     public routes = Routes;
 }
 

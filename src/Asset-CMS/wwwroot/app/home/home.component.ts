@@ -5,10 +5,10 @@ import {Routes} from '../routes.config';
 
 @Component({
 	selector: 'home',
-	templateUrl: './app/home/home.html',
+	templateUrl: './app/home/home.component.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ]
 })
-export class Home{
+export class HomeComponent{
 
 	constructor(private _router: Router) {
 	}

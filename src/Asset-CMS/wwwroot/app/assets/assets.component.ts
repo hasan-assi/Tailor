@@ -4,9 +4,9 @@ import {Asset} from './asset';
 
 @Component({
     selector: 'assets',
-    templateUrl: './app/assets/assets.html'
+    templateUrl: './app/assets/assets.component.html'
 })
-export class Assets {
+export class AssetsComponent {
     public assets: Array<Asset>;
 
     constructor(private _assetsService: AssetService) {

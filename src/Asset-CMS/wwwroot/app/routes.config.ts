@@ -1,10 +1,10 @@
-import { Home } from './home/Home';
-import { Assets } from './assets/assets';
+import { HomeComponent } from './home/home.component';
+import { AssetsComponent } from './assets/assets.component';
 import { Route, Router } from 'angular2/router';
 
 export var Routes = {
-  home: new Route({   path: '/'      , name: "Home"  , component: Home}),
-  assets: new Route({ path: '/assets', name: "Assets", component: Assets })
+  home: new Route({   path: '/'      , name: "Home"  , component: HomeComponent}),
+  assets: new Route({ path: '/assets', name: "Assets", component: AssetsComponent })
 };
 
 export const APP_ROUTES = Object.keys(Routes).map(r => Routes[r]);
