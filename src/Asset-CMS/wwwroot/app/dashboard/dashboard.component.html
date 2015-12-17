@@ -1,0 +1,8 @@
+﻿<h3>Top Assets</h3>
+<div class="gird grid-pad">
+    <div *ngFor="#asset of assets" class="col-4" (click)="gotoDetail(asset)">
+        <div class="module asset">
+            <h4>{{asset.Msn}}</h4>
+        </div>
+    </div>
+</div>

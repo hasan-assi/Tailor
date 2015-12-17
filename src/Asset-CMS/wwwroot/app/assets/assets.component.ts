@@ -1,16 +1,19 @@
 ﻿import {Component, OnInit} from 'angular2/core';
-import {AssetService} from './assets.service';
+import {AssetService} from './asset.service';
 import {Asset} from './asset';
 
 @Component({
     selector: 'assets',
     templateUrl: './app/assets/assets.component.html'
 })
-export class AssetsComponent {
+export class AssetsComponent implements OnInit{
     public assets: Array<Asset>;
 
     constructor(private _assetsService: AssetService) {
-        _assetsService.getAssets()
+    }
+
+    ngOnInit() {
+        this._assetsService.getAssets()
             .subscribe(res => this.assets = res);
     }
 

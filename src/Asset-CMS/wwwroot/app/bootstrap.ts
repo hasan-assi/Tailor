@@ -3,7 +3,7 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FormBuilder} from 'angular2/common';
 import { Http, HTTP_BINDINGS } from 'angular2/http';
 import { AppComponent } from './app.component';
-import { AssetService } from './assets/assets.service'
+import { AssetService } from './assets/asset.service'
 
 bootstrap(AppComponent, [
     ROUTER_PROVIDERS, ROUTER_DIRECTIVES,
