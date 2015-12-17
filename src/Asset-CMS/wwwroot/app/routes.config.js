@@ -1,10 +1,25 @@
-var Home_1 = require('./home/Home');
-var assets_1 = require('./assets/assets');
-var router_1 = require('angular2/router');
-exports.Routes = {
-    home: new router_1.Route({ path: '/', as: "Home", component: Home_1.Home }),
-    assets: new router_1.Route({ path: '/assets', as: "Assets", component: assets_1.Assets })
-};
-exports.APP_ROUTES = Object.keys(exports.Routes).map(function (r) { return exports.Routes[r]; });
+System.register(['./home/Home', './assets/assets', 'angular2/router'], function(exports_1) {
+    var Home_1, assets_1, router_1;
+    var Routes, APP_ROUTES;
+    return {
+        setters:[
+            function (Home_1_1) {
+                Home_1 = Home_1_1;
+            },
+            function (assets_1_1) {
+                assets_1 = assets_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            }],
+        execute: function() {
+            exports_1("Routes", Routes = {
+                home: new router_1.Route({ path: '/', name: "Home", component: Home_1.Home }),
+                assets: new router_1.Route({ path: '/assets', name: "Assets", component: assets_1.Assets })
+            });
+            exports_1("APP_ROUTES", APP_ROUTES = Object.keys(Routes).map(function (r) { return Routes[r]; }));
+        }
+    }
+});
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9yb3V0ZXMuY29uZmlnLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHFCQUFxQixhQUFhLENBQUMsQ0FBQTtBQUNuQyx1QkFBdUIsaUJBQWlCLENBQUMsQ0FBQTtBQUN6Qyx1QkFBOEIsaUJBQWlCLENBQUMsQ0FBQTtBQUVyQyxjQUFNLEdBQUc7SUFDbEIsSUFBSSxFQUFFLElBQUksY0FBSyxDQUFDLEVBQUksSUFBSSxFQUFFLEdBQUcsRUFBUSxFQUFFLEVBQUUsTUFBTSxFQUFJLFNBQVMsRUFBRSxXQUFJLEVBQUMsQ0FBQztJQUNwRSxNQUFNLEVBQUUsSUFBSSxjQUFLLENBQUMsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLEVBQUUsRUFBRSxRQUFRLEVBQUUsU0FBUyxFQUFFLGVBQU0sRUFBRSxDQUFDO0NBQ3hFLENBQUM7QUFFVyxrQkFBVSxHQUFHLE1BQU0sQ0FBQyxJQUFJLENBQUMsY0FBTSxDQUFDLENBQUMsR0FBRyxDQUFDLFVBQUEsQ0FBQyxJQUFJLE9BQUEsY0FBTSxDQUFDLENBQUMsQ0FBQyxFQUFULENBQVMsQ0FBQyxDQUFDIiwiZmlsZSI6ImFwcC9yb3V0ZXMuY29uZmlnLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSG9tZSB9IGZyb20gJy4vaG9tZS9Ib21lJztcbmltcG9ydCB7IEFzc2V0cyB9IGZyb20gJy4vYXNzZXRzL2Fzc2V0cyc7XG5pbXBvcnQgeyBSb3V0ZSwgUm91dGVyIH0gZnJvbSAnYW5ndWxhcjIvcm91dGVyJztcblxuZXhwb3J0IHZhciBSb3V0ZXMgPSB7XG4gIGhvbWU6IG5ldyBSb3V0ZSh7ICAgcGF0aDogJy8nICAgICAgLCBhczogXCJIb21lXCIgICwgY29tcG9uZW50OiBIb21lfSksXG4gIGFzc2V0czogbmV3IFJvdXRlKHsgcGF0aDogJy9hc3NldHMnLCBhczogXCJBc3NldHNcIiwgY29tcG9uZW50OiBBc3NldHMgfSlcbn07XG5cbmV4cG9ydCBjb25zdCBBUFBfUk9VVEVTID0gT2JqZWN0LmtleXMoUm91dGVzKS5tYXAociA9PiBSb3V0ZXNbcl0pO1xuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9yb3V0ZXMuY29uZmlnLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O1FBSVcsTUFBTSxFQUtKLFVBQVU7Ozs7Ozs7Ozs7Ozs7WUFMWixvQkFBQSxNQUFNLEdBQUc7Z0JBQ2xCLElBQUksRUFBRSxJQUFJLGNBQUssQ0FBQyxFQUFJLElBQUksRUFBRSxHQUFHLEVBQVEsSUFBSSxFQUFFLE1BQU0sRUFBSSxTQUFTLEVBQUUsV0FBSSxFQUFDLENBQUM7Z0JBQ3RFLE1BQU0sRUFBRSxJQUFJLGNBQUssQ0FBQyxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsSUFBSSxFQUFFLFFBQVEsRUFBRSxTQUFTLEVBQUUsZUFBTSxFQUFFLENBQUM7YUFDMUUsQ0FBQSxDQUFDO1lBRVcsd0JBQUEsVUFBVSxHQUFHLE1BQU0sQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsR0FBRyxDQUFDLFVBQUEsQ0FBQyxJQUFJLE9BQUEsTUFBTSxDQUFDLENBQUMsQ0FBQyxFQUFULENBQVMsQ0FBQyxDQUFBLENBQUMiLCJmaWxlIjoiYXBwL3JvdXRlcy5jb25maWcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBIb21lIH0gZnJvbSAnLi9ob21lL0hvbWUnO1xuaW1wb3J0IHsgQXNzZXRzIH0gZnJvbSAnLi9hc3NldHMvYXNzZXRzJztcbmltcG9ydCB7IFJvdXRlLCBSb3V0ZXIgfSBmcm9tICdhbmd1bGFyMi9yb3V0ZXInO1xuXG5leHBvcnQgdmFyIFJvdXRlcyA9IHtcbiAgaG9tZTogbmV3IFJvdXRlKHsgICBwYXRoOiAnLycgICAgICAsIG5hbWU6IFwiSG9tZVwiICAsIGNvbXBvbmVudDogSG9tZX0pLFxuICBhc3NldHM6IG5ldyBSb3V0ZSh7IHBhdGg6ICcvYXNzZXRzJywgbmFtZTogXCJBc3NldHNcIiwgY29tcG9uZW50OiBBc3NldHMgfSlcbn07XG5cbmV4cG9ydCBjb25zdCBBUFBfUk9VVEVTID0gT2JqZWN0LmtleXMoUm91dGVzKS5tYXAociA9PiBSb3V0ZXNbcl0pO1xuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

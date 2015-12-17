@@ -1,11 +1,10 @@
-﻿import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
+﻿import {Component, OnInit} from 'angular2/core';
 import {AssetService} from './assets.service';
 import {Asset} from './asset';
 
 @Component({
     selector: 'assets',
-    templateUrl: './app/assets/assets.html',
-    directives: [CORE_DIRECTIVES],
+    templateUrl: './app/assets/assets.html'
 })
 export class Assets {
     public assets: Array<Asset>;

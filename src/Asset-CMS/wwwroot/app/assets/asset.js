@@ -1,10 +1,18 @@
-var Asset = (function () {
-    function Asset(id, msn) {
-        this.id = id;
-        this.msn = msn;
+System.register([], function(exports_1) {
+    var Asset;
+    return {
+        setters:[],
+        execute: function() {
+            Asset = (function () {
+                function Asset(Id, Msn) {
+                    this.Id = Id;
+                    this.Msn = Msn;
+                }
+                return Asset;
+            })();
+            exports_1("Asset", Asset);
+        }
     }
-    return Asset;
-})();
-exports.Asset = Asset;
+});
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hc3NldHMvYXNzZXQudHMiXSwibmFtZXMiOlsiQXNzZXQiLCJBc3NldC5jb25zdHJ1Y3RvciJdLCJtYXBwaW5ncyI6IkFBQ0E7SUFDSUEsZUFDV0EsRUFBVUEsRUFDVkEsR0FBV0E7UUFEWEMsT0FBRUEsR0FBRkEsRUFBRUEsQ0FBUUE7UUFDVkEsUUFBR0EsR0FBSEEsR0FBR0EsQ0FBUUE7SUFBSUEsQ0FBQ0E7SUFDL0JELFlBQUNBO0FBQURBLENBSkEsQUFJQ0EsSUFBQTtBQUpZLGFBQUssUUFJakIsQ0FBQSIsImZpbGUiOiJhcHAvYXNzZXRzL2Fzc2V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG5leHBvcnQgY2xhc3MgQXNzZXQge1xuICAgIGNvbnN0cnVjdG9yKFxuICAgICAgICBwdWJsaWMgaWQ6IG51bWJlcixcbiAgICAgICAgcHVibGljIG1zbjogc3RyaW5nKSB7IH1cbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9hc3NldHMvYXNzZXQudHMiXSwibmFtZXMiOlsiQXNzZXQiLCJBc3NldC5jb25zdHJ1Y3RvciJdLCJtYXBwaW5ncyI6Ijs7Ozs7WUFDQTtnQkFDSUEsZUFDV0EsRUFBVUEsRUFDVkEsR0FBV0E7b0JBRFhDLE9BQUVBLEdBQUZBLEVBQUVBLENBQVFBO29CQUNWQSxRQUFHQSxHQUFIQSxHQUFHQSxDQUFRQTtnQkFBSUEsQ0FBQ0E7Z0JBQy9CRCxZQUFDQTtZQUFEQSxDQUpBLEFBSUNBLElBQUE7WUFKRCx5QkFJQyxDQUFBIiwiZmlsZSI6ImFwcC9hc3NldHMvYXNzZXQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbmV4cG9ydCBjbGFzcyBBc3NldCB7XG4gICAgY29uc3RydWN0b3IoXG4gICAgICAgIHB1YmxpYyBJZDogbnVtYmVyLFxuICAgICAgICBwdWJsaWMgTXNuOiBzdHJpbmcpIHsgfVxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

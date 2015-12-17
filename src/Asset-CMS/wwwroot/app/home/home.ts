@@ -1,11 +1,12 @@
-import * as ng from 'angular2/angular2';
-import {Router} from 'angular2/router';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
+import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Routes} from '../routes.config';
 
-@ng.Component({
+@Component({
 	selector: 'home',
 	templateUrl: './app/home/home.html',
-    directives: [ng.CORE_DIRECTIVES, ng.FORM_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES ]
 })
 export class Home{
 
@@ -13,7 +14,7 @@ export class Home{
 	}
 
     goToAssets(){
-        this._router.navigate([`/${Routes.assets.as}`, {}]);
+        this._router.navigate([`/${Routes.assets.name}`, {}]);
     }
 
 }

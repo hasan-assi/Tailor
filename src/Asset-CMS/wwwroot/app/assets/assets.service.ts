@@ -1,6 +1,7 @@
 import {Http} from 'angular2/http';
-import {Injectable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {Asset} from './asset';
+
 
 /**
  * people service
@@ -14,11 +15,9 @@ export class AssetService {
 
     getAssets() {
         //return an observable
-        return this._http.get('/api/Asset')
-             .catch((err) => {
-                console.log(err);
-                return [];
-            })
+        let request = this._http.get('/api/Asset');
+
+        return request
             .map((response) => {
                 return response.json();
             }).map((assets: Array<any>) => {
