@@ -4,8 +4,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { Route, Router } from 'angular2/router';
 
 export var Routes = {
-    home: new Route({ path: '/', name: "Home", component: HomeComponent }),
-    assets: new Route({ path: '/assets', name: "Assets", component: AssetsComponent }),
+    assets: new Route({ path: '/assets', name: "Assets", component: AssetsComponent}),
+    home: new Route({ path: '/home', name: "Home", component: HomeComponent, useAsDefault: true }),
     dashboard: new Route({ path: "/dashboard", name: "Dashboard", component: DashboardComponent })
 };
 

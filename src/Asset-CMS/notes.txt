@@ -1,2 +1,5 @@
-bower can not restore packages
+#bower can not restore packages
 	git config --global url."https://".insteadOf git://
+
+#publish to iis
+	https://docs.asp.net/en/latest/publishing/iis.html
