@@ -1,27 +1,26 @@
 ﻿<!--{{diagnostic}}-->
-<div class="container">
-    <div class="page-header"><h1>Runners</h1></div>
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Our Top Runners</div>
-        <div class="panel-body">
-            <p>Here is an example of the runners that you will see on the trails in our area.</p>
-        </div>
 
-        <!-- Table -->
-        <table class="table">
-            <thead>
+
+<div class="panel panel-default ">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Our Assets</div>
+    <div class="panel-body">
+        <p>Here is an example of the assets that you will see in CMS.</p>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
             <tr>
                 <th>#</th>
                 <th>MSN</th>
             </tr>
-            </thead>
-            <tbody *ngFor="#asset of assets" >
-                <tr>
-                    <th scope="row">{{asset.Id}}</th>
-                    <td>{{asset.Msn}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        </thead>
+        <tbody *ngFor="#asset of assets">
+            <tr>
+                <th scope="row">{{asset.Id}}</th>
+                <td>{{asset.Msn}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
