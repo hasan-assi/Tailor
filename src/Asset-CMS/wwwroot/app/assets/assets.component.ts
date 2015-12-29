@@ -1,4 +1,6 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import {Component, OnInit, Pipe} from 'angular2/core';
+import {Router} from 'angular2/router';
+import {Routes} from "../routes.config";
 import {AssetService} from './asset.service';
 import {Asset} from './asset';
 
@@ -6,10 +8,11 @@ import {Asset} from './asset';
     selector: 'assets',
     templateUrl: './app/assets/assets.component.html'
 })
-export class AssetsComponent implements OnInit{
+export class AssetsComponent implements OnInit {
     public assets: Array<Asset>;
 
-    constructor(private _assetsService: AssetService) {
+    constructor(private _assetsService: AssetService,
+        private _router: Router) {
     }
 
     ngOnInit() {
@@ -17,6 +20,13 @@ export class AssetsComponent implements OnInit{
             .subscribe(res => this.assets = res);
     }
 
+    goToDetail(asset: Asset) {
+        this._router.navigate([`/${Routes.assetDetail.name}`, { id: asset.Id }]);
+    }
+
+    newAsset() {
+        this._router.navigate([`/${Routes.assetDetail.name}`]);
+    }
     get diagnostic() { return JSON.stringify(this.assets); }
 
 }

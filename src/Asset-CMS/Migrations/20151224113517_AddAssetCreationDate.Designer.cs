@@ -8,9 +8,10 @@ using Asset_CMS.DAL;
 namespace AssetCMS.Migrations
 {
     [DbContext(typeof(AssetDbContext))]
-    partial class AssetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20151224113517_AddAssetCreationDate")]
+    partial class AddAssetCreationDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -21,7 +22,7 @@ namespace AssetCMS.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreationDate").ForSqlServerHasDefaultValue("GetDate()");
+                    b.Property<DateTime>("CreationDate");
 
                     b.Property<string>("Msn");
 

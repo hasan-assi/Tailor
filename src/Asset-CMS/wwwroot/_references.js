@@ -3,6 +3,7 @@
 /// <reference path="app/app.component.js" />
 /// <reference path="app/assets/asset.js" />
 /// <reference path="app/assets/asset.service.js" />
+/// <reference path="app/assets/asset-detail-form.component.js" />
 /// <reference path="app/assets/assets.component.js" />
 /// <reference path="app/bootstrap.js" />
 /// <reference path="app/dashboard/dashboard.component.js" />

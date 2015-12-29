@@ -1,4 +1,4 @@
-import {Http} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/core';
 import {Asset} from './asset';
 
@@ -16,7 +16,6 @@ export class AssetService {
     getAssets() {
         //return an observable
         let request = this._http.get('/api/Asset');
-
         return request
             .map((response) => {
                 return response.json();
@@ -30,6 +29,21 @@ export class AssetService {
                 }
                 return result;
             });
+    }
+
+    getAsset(id: number) {
+        return this._http.get('/api/Asset/' + id.toString())
+            .map((response) => {
+                return response.json();
+            }).
+            map((asset: Asset) => { return asset; });
+    }
+
+    updateAsset(asset: Asset) {
+        var postHeaders = new Headers();
+        postHeaders.append('Content-Type', 'application/json');
+
+        return this._http.put('/api/Asset/' + asset.Id.toString(), JSON.stringify(asset), { headers: postHeaders });
     }
 
     private _fetchFailed(error: any) {

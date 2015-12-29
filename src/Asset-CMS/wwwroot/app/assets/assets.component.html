@@ -1,9 +1,9 @@
 ﻿<!--{{diagnostic}}-->
-
-
 <div class="panel panel-default ">
     <!-- Default panel contents -->
-    <div class="panel-heading">Our Assets</div>
+    <div class="panel-heading">
+        <button type="button" class="btn btn-primary">New Asset</button>
+    </div>
     <div class="panel-body">
         <p>Here is an example of the assets that you will see in CMS.</p>
     </div>
@@ -14,12 +14,32 @@
             <tr>
                 <th>#</th>
                 <th>MSN</th>
+                <th>Creation date</th>
+                <th></th>
             </tr>
         </thead>
         <tbody *ngFor="#asset of assets">
             <tr>
                 <th scope="row">{{asset.Id}}</th>
                 <td>{{asset.Msn}}</td>
+                <td>{{asset.CreationDate}}</td>
+                <td>
+                    <!-- Split button -->
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-primary"  (click)="goToDetail(asset)">Edit</button>
+                        <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Delete</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>

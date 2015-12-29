@@ -55,7 +55,7 @@ namespace Asset_CMS
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddMvc();//.AddJsonOptions(options => options.SerializerSettings.DateFormatString ="MM/dd/yyyy");
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -68,6 +68,7 @@ namespace Asset_CMS
             services.AddScoped<IOperationScoped, Operation>();
             services.AddSingleton<IOperationSingleton, Operation>();
             services.AddInstance<IOperationInstance>(new Operation());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

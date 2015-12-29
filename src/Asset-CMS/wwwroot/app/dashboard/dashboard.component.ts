@@ -21,9 +21,9 @@ export class DashboardComponent implements OnInit {
         this._assetService.getAssets()
             .subscribe(res => this.assets = res);
     }
-
+   
     gotoAsset(asset:Asset) {
-        this._router.navigate(['/$Routes.assetsDetail.name', { id: asset.Id }]);
+        this._router.navigate([`/${Routes.assetDetail.name}`, { id: asset.Id }]);
     }
 }
 

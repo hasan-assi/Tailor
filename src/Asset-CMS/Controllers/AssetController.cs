@@ -29,6 +29,7 @@ namespace Asset_CMS.Controllers
         {
             var asset = _assetRepository.Find(id);
             if (asset == null) return HttpNotFound();
+            asset.CreationDate = asset.CreationDate.Date;
             return new ObjectResult(asset);
         }
 
@@ -40,13 +41,16 @@ namespace Asset_CMS.Controllers
             return CreatedAtRoute("GetAsset", new {controller = "Asset", id = asset.Id}, asset);
         }
 
-	    [HttpPut("{id}")]
+	    [HttpPut("{id}", Name = "UpdateAsset")]
 	    public IActionResult Update(int id, [FromBody] Asset asset)
 	    {
 	        if (asset == null || asset.Id != id) return HttpBadRequest();
 	        var item = _assetRepository.Find(id);
 	        if (item == null) return HttpNotFound();
             _assetRepository.Update(asset);
+
+            //return CreatedAtRoute("GetAsset", new {controller = "Asset", id = asset.Id}, asset);
+	       
 	        return new NoContentResult();
 	    }
 
