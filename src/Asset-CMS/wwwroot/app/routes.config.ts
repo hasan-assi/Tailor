@@ -7,6 +7,7 @@ import { Route, Router } from 'angular2/router';
 export var Routes = {
     assets: new Route({ path: '/assets', name: "Assets", component: AssetsComponent }),
     assetDetail: new Route({ path: '/asset/:id', name: "AssetDetail", component: AssetDetailFormComponent }),
+    assetNew: new Route({ path: '/asset', name: "AssetDetail", component: AssetDetailFormComponent }),
     home: new Route({ path: '/home', name: "Home", component: HomeComponent, useAsDefault: true }),
     dashboard: new Route({ path: "/dashboard", name: "Dashboard", component: DashboardComponent })
 };

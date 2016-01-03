@@ -46,6 +46,16 @@ export class AssetService {
         return this._http.put('/api/Asset/' + asset.Id.toString(), JSON.stringify(asset), { headers: postHeaders });
     }
 
+    createAsset(asset: Asset) {
+        var postHeaders = new Headers();
+        postHeaders.append('Content-Type', 'application/json');
+        return this._http.post('api/Asset/', JSON.stringify(asset, Object.keys(asset.constructor.prototype)), { headers: postHeaders });
+    }
+    deleteAsset(assetId: number) {
+
+        return this._http.delete('/api/Asset/' + assetId.toString());
+    }
+
     private _fetchFailed(error: any) {
         console.error(error);
         return Promise.reject(error);

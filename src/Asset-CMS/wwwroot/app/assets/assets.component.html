@@ -2,7 +2,7 @@
 <div class="panel panel-default ">
     <!-- Default panel contents -->
     <div class="panel-heading">
-        <button type="button" class="btn btn-primary">New Asset</button>
+        <button type="button" class="btn btn-primary" (click)="newAsset()">New Asset</button>
     </div>
     <div class="panel-body">
         <p>Here is an example of the assets that you will see in CMS.</p>
@@ -32,7 +32,7 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Delete</a></li>
+                            <li><a (click)="deleteAsset(asset.Id)">Delete</a></li>
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>

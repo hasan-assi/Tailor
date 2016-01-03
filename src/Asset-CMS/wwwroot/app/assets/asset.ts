@@ -7,7 +7,6 @@ export class Asset {
 
     constructor() { }
 
-
     get Id(): number {
         return this._id;
     }

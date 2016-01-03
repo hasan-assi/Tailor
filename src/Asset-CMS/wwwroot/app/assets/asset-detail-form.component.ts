@@ -11,8 +11,9 @@ import {Asset} from './asset';
 })
 export class AssetDetailFormComponent implements OnInit {
 
-    public asset: Asset;// =  Asset.GetDefault();// = new Asset(40,'40', null) ;
-    submitted: Boolean = false;
+    private asset: Asset;// =  Asset.GetDefault();// = new Asset(40,'40', null) ;
+    private submitted: Boolean = false;
+    private _isNew: Boolean = false;
 
     constructor(private _assetService: AssetService,
         private _routeParams: RouteParams,
@@ -23,19 +24,30 @@ export class AssetDetailFormComponent implements OnInit {
     ngOnInit() {
         if (!this.asset) {
             let id = +this._routeParams.get('id');
-            this._assetService.getAsset(id).subscribe(res => this.asset = res);
-        }
-        else //new
-        {
-            this.asset = new Asset();
+            if (id > 0) {
+                this._isNew = false;
+                this._assetService.getAsset(id).subscribe(res => this.asset = res);
+            }
+            else //new
+            {
+                this.asset = new Asset();
+                this._isNew = true;
+            }
         }
     }
 
     onSubmit() {
-        this._assetService.updateAsset(this.asset).subscribe(
-        data => data ,
-        err => console.log(err),
-        () => this.afterSubmit());
+        if (!this._isNew) {
+            this._assetService.updateAsset(this.asset).subscribe(
+                data => data,
+                err => console.log(err),
+                () => this.afterSubmit());
+        } else {
+            this._assetService.createAsset(this.asset).subscribe(
+                data => data,
+                err => console.log(err),
+                () => this.afterSubmit());
+        }
     }
 
     afterSubmit() {

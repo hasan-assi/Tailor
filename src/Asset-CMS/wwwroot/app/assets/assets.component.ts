@@ -25,8 +25,13 @@ export class AssetsComponent implements OnInit {
     }
 
     newAsset() {
-        this._router.navigate([`/${Routes.assetDetail.name}`]);
+        this._router.navigate([`/${Routes.assetNew.name}`]);
     }
+
+    deleteAsset(assetId:number) {
+        this._assetsService.deleteAsset(assetId).subscribe();
+    }
+
     get diagnostic() { return JSON.stringify(this.assets); }
 
 }
