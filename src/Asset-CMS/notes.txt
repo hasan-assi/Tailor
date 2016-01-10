@@ -7,3 +7,5 @@
 #Add EF migration and update database
 	dnx ef migrations add AddAssetCreationDate -c AssetDbContext
 	dnx ef database update -c AssetDbContext
+
+#

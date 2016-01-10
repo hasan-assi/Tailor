@@ -1,11 +1,28 @@
-﻿
-export class Asset {
+﻿import {IModel, ModelBase} from "../Base/IModel";
+
+export class Asset {//extends ModelBase<number> {
+
+    //Origin:Asset;
 
     private _id: number;
     private _msn: string;
     private _creationDate: Date;
 
-    constructor() { }
+    blocksPerRow: (windowWidth: number) => number
+    = function (windowWidth) {
+        return Math.floor(windowWidth / 12);
+    };
+
+
+    Clone: () => Asset  
+    = function ()
+    {
+        return JSON.parse(JSON.stringify(this));
+    }
+
+    constructor() {
+       
+    }
 
     get Id(): number {
         return this._id;
