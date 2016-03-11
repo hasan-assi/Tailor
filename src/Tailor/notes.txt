@@ -1,0 +1,11 @@
+#bower can not restore packages
+	git config --global url."https://".insteadOf git://
+
+#publish to iis
+	https://docs.asp.net/en/latest/publishing/iis.html
+
+#Add EF migration and update database
+	dnx ef migrations add AddAssetCreationDate -c AssetDbContext
+	dnx ef migrations add "initial-trailor-db" -c TailorDbContext
+
+	dnx ef database update -c AssetDbContext

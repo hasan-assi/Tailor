@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Tailor"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=.\\MSSQLSERVER2014;Database=Tailor;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

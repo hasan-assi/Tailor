@@ -1,0 +1,29 @@
+﻿{{diagnostic}}
+<div class="panel panel-default ">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <button type="button" class="btn btn-primary" (click)="newEmployee()">New Employee</button>
+    </div>
+    <div class="panel-body">
+        <p>Here is an example of the employees that you will see in CMS.</p>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>MSN</th>
+                <th>Creation date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="#employee of employees">
+            <tr>
+                <th scope="row">{{employee.Id}}</th>
+                <td>{{employee.FirstName}}</td>
+                <td>{{employee.LastName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
