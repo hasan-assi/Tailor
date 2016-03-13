@@ -15,9 +15,9 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     private employee: Employee;// =  Employee.GetDefault();// = new Employee(40,'40', null) ;
     private submitted: Boolean = false;
     private _isNew: Boolean = false;
-    private _msn:string;
+    private _firstName:string;
 
-    constructor(private _employeeService: EmployeeService,
+    constructor(private employeeService: EmployeeService,
         private _routeParams: RouteParams,
         private _router: Router,
         private _dialog: DialogService) {
@@ -25,10 +25,10 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     }
 
     routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
-        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged.
-        //if (!this.employee || this.employee.Msn === this._msn) {
-        //    return true;
-        //}
+         //Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged.
+        if (!this.employee || this.employee.FirstName === this._firstName) {
+            return true;
+        }
         // Otherwise ask the user with the dialog service and return its
         // promise which resolves to true or false when the user decides
         return this._dialog.confirm('Discard changes?');
@@ -39,7 +39,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
             let id = +this._routeParams.get('id');
             if (id > 0) {
                 this._isNew = false;
-                this._employeeService.getEmployee(id).subscribe(res => {
+                this.employeeService.getEmployee(id).subscribe(res => {
                     this.employee = res;
                     },
                     err => console.log(err)
@@ -56,12 +56,12 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
 
     onSubmit() {
         if (!this._isNew) {
-            this._employeeService.updateEmployee(this.employee).subscribe(
+            this.employeeService.updateEmployee(this.employee).subscribe(
                 data => data,
                 err => console.log(err),
                 () => this.afterSubmit());
         } else {
-            this._employeeService.createEmployee(this.employee).subscribe(
+            this.employeeService.createEmployee(this.employee).subscribe(
                 data => data,
                 err => console.log(err),
                 () => this.afterSubmit());
@@ -80,5 +80,5 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     //}
 
     //get diagnostic() { return JSON.stringify(this.employee); }
-    get diagnostic() { return this.employee.FirstName; }
+    get diagnostic() { return JSON.stringify( this.employee); }
 }

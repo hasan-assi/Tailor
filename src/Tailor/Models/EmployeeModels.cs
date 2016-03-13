@@ -14,7 +14,7 @@ namespace Tailor.Models
         [Key]
         public int Id { set; get; }
         [Required]
-        public string CardId { set; get; }
+        public string CardNo { set; get; }
         public string FirstName { set; get; }
         public string LastName { set; get; }
         [Required]

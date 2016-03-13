@@ -2,7 +2,7 @@
 export class Employee {
     
     constructor(public Id: number,
-        public CardId: string,
+        public CardNo: string,
         public FirstName: string,
         public LastName: string,
         public HourRate: number,

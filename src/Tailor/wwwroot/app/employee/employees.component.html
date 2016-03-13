@@ -1,4 +1,4 @@
-﻿{{diagnostic}}
+﻿<!--<!{{diagnostic}}-->
 <div class="panel panel-default ">
     <!-- Default panel contents -->
     <div class="panel-heading">
@@ -13,16 +13,34 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>MSN</th>
-                <th>Creation date</th>
+                <th>Card No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th></th>
             </tr>
         </thead>
         <tbody *ngFor="#employee of employees">
             <tr>
                 <th scope="row">{{employee.Id}}</th>
+                <td>{{employee.CardNo}}</td>
                 <td>{{employee.FirstName}}</td>
                 <td>{{employee.LastName}}</td>
+                <td>
+                    <!-- Split button -->
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-primary"  (click)="goToDetail(employee)">Edit</button>
+                        <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a (click)="deleteEmployee(employee.Id)">Delete</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </td> 
             </tr>
         </tbody>
     </table>

@@ -8,9 +8,10 @@ using Tailor.DAL;
 namespace Tailor.Migrations.TailorDb
 {
     [DbContext(typeof(TailorDbContext))]
-    partial class TailorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160311171144_rename-employee-cardNo")]
+    partial class renameemployeecardNo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
