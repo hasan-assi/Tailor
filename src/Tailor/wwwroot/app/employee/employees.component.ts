@@ -10,27 +10,38 @@ import {Employee } from "./employee";
 })
 export class EmployeesComponent implements OnInit {
     public employees: Array<Employee>;
+    public erroMessage: any;
 
     constructor(private _employeesService: EmployeeService,
         private _router: Router) {
     }
 
     ngOnInit() {
-        this._employeesService.getEmployees()
-            .subscribe(res => this.employees = res);
+        this.getAllEmployess();
     }
 
+    getAllEmployess() {
+        this._employeesService.getEmployees()
+            .subscribe(
+            res => this.employees = res,
+            error => this.erroMessage = <any>error);
+    }
     goToDetail(employee: Employee) {
         this._router.navigate([`/${Routes.employeeDetail.name}`, { id: employee.Id }]);
     }
 
-    newAsset() {
+    newEmployee() {
         this._router.navigate([`/${Routes.employeeNew.name}`]);
     }
 
-    //deleteAsset(assetId:number) {
-    //    this._employeesService.deleteAsset(assetId).subscribe();
-    //}
+    deleteEmployee(employeeId:number) {
+        this._employeesService.deleteEmployee(employeeId).subscribe();
+        this.getAllEmployess();
+        //let index = this.employees.indexOf(this.employees.filter(x => x.Id == employeeId)[0]);
+        //this.employees.slice(index);
+
+        //console.log(this.employees.filter(x => x.Id == employeeId));
+    }
 
     get diagnostic() { return JSON.stringify(this.employees); }
 

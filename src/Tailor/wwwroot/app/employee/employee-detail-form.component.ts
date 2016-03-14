@@ -1,5 +1,5 @@
 ﻿import {Component, OnInit} from 'angular2/core';
-import {NgForm}    from 'angular2/common';
+import {NgForm, FormBuilder, Validators, ControlGroup, Control}    from 'angular2/common';
 import {RouteParams, Router, CanDeactivate, ComponentInstruction} from 'angular2/router';
 import {Routes} from "../routes.config"
 import {EmployeeService } from './employee.service';
@@ -15,18 +15,31 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     private employee: Employee;// =  Employee.GetDefault();// = new Employee(40,'40', null) ;
     private submitted: Boolean = false;
     private _isNew: Boolean = false;
-    private _firstName:string;
+    private _firstName: string;
+    private active = true;
+    private form: ControlGroup;
+    firstName: Control = new Control("", Validators.required);
 
     constructor(private employeeService: EmployeeService,
         private _routeParams: RouteParams,
         private _router: Router,
-        private _dialog: DialogService) {
+        private _dialog: DialogService,
+        private _fb: FormBuilder) {
+        this.form = _fb.group(
+            {
+                firstName: this.firstName,
+                lastName: [''],
+                cardNo: ['', Validators.required],
+                hourRate: ['', Validators.required],
+                hourPerDay: ['', Validators.required]
+            }
+        );
 
     }
 
     routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
          //Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged.
-        if (!this.employee || this.employee.FirstName === this._firstName) {
+        if (this.submitted || !this.employee || !this.form.dirty) {
             return true;
         }
         // Otherwise ask the user with the dialog service and return its
@@ -48,8 +61,11 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
             }
             else //new
             {
-                //this.employee = new Employee();
+                this.employee = new Employee(0,'','','',0,0);
                 this._isNew = true;
+
+                this.active = false;
+                setTimeout(() => this.active = true, 0);
             }
         }
     }
@@ -58,7 +74,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
         if (!this._isNew) {
             this.employeeService.updateEmployee(this.employee).subscribe(
                 data => data,
-                err => console.log(err),
+                err => console.log(<any>err),
                 () => this.afterSubmit());
         } else {
             this.employeeService.createEmployee(this.employee).subscribe(
@@ -67,7 +83,9 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
                 () => this.afterSubmit());
         }
     }
-
+    test() {
+       alert(this.form.dirty);
+    }
     afterSubmit() {
         this.submitted = true;
         this._router.navigate([`/${Routes.employees.name}`]);
