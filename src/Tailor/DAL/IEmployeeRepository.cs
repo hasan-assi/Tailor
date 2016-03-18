@@ -7,10 +7,19 @@ namespace Tailor.Models
 {
     public interface IEmployeeRepository
     {
-        void Add(Employee employee);
-        IEnumerable<Employee> GetAll();
-        Employee Find(int Id);
-        void Remove(int Id);
-        void Update(Employee employee);
+        void Save();
+        void AddEmployee(Employee employee);
+        IEnumerable<Employee> GetAllEmployees();
+        Employee FindEmployee(int Id);
+        void RemoveEmployee(int Id);
+        void UpdateEmployee(Employee employee);
+
+        void AddEmployeeTimeSheet(EmployeeTimeSheet timeSheet);
+        void AddEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> timeSheets);
+        IEnumerable<EmployeeTimeSheet> GetAllEmployeesTimeSheets();
+        IEnumerable<EmployeeTimeSheet> GetAllEmployeeTimeSheet(int employeeId);
+        IEnumerable<EmployeeTimeSheet> GetEmployeesTimeSheetsByDate(DateTime date);
+        void UpdateEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> timeSheets);
+        void RemoveEmployeesTimesSheets(IEnumerable<EmployeeTimeSheet> timeSheets);
     }
 }

@@ -21,13 +21,13 @@ namespace Tailor.Controllers
         [HttpGet]
 	    public IEnumerable<Employee> GetAll()
         {
-            return EmployeeRepository.GetAll();
+            return EmployeeRepository.GetAllEmployees();
         }
 
         [HttpGet("{id}",Name = "GetEmployee")]
         public IActionResult GetByEmployeeId(int id)
         {
-            var asset = EmployeeRepository.Find(id);
+            var asset = EmployeeRepository.FindEmployee(id);
             if (asset == null) return HttpNotFound();
   
             return new ObjectResult(asset);
@@ -37,7 +37,7 @@ namespace Tailor.Controllers
         public IActionResult Create ([FromBody]Employee employee)
         {
             if (employee == null) return HttpBadRequest();
-            EmployeeRepository.Add(employee);
+            EmployeeRepository.AddEmployee(employee);
             return CreatedAtRoute("GetEmployee", new {controller = "Employee", id = employee.Id}, employee);
         }
 
@@ -45,9 +45,9 @@ namespace Tailor.Controllers
 	    public IActionResult Update(int id, [FromBody] Employee employee)
 	    {
 	        if (employee == null || employee.Id != id) return HttpBadRequest();
-	        var item = EmployeeRepository.Find(id);
+	        var item = EmployeeRepository.FindEmployee(id);
 	        if (item == null) return HttpNotFound();
-            EmployeeRepository.Update(employee);
+            EmployeeRepository.UpdateEmployee(employee);
 
             //return CreatedAtRoute("GetEmployee", new {controller = "Employee", id = Employee.Id}, Employee);
 	       
@@ -57,7 +57,7 @@ namespace Tailor.Controllers
         [HttpDelete("{id}")]
 	    public void Detele(int id)
 	    {
-	        EmployeeRepository.Remove(id);
+	        EmployeeRepository.RemoveEmployee(id);
 	    }
 
     }

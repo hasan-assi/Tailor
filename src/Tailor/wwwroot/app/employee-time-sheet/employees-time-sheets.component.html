@@ -1,0 +1,40 @@
+﻿
+<div class="panel panel-default ">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <!--<input type="date" [(ngModel)] ='_date'/>-->
+        <my-date [(date)]="_date" (dateChange) ="getDayTimeSheet()"></my-date>
+       
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm" *ngIf="_employeesTimeSheets" [ngFormModel]="_form">
+        <!-- Table -->
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Hour Rate</th>
+                <th>Hour Per Day</th>
+                <th>Wage</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody *ngFor="#employeeTimeSheet of _employeesTimeSheets">
+            <tr>
+                <th scope="row">
+                    <input type="checkbox" [(ngModel)]="employeeTimeSheet.Checked" />
+                </th>
+                <td>{{employeeTimeSheet.Employee.FirstName}} {{employeeTimeSheet.Employee.LastName}} </td>
+                <td><input [disabled] ="!employeeTimeSheet.Checked" type="number" [(ngModel)]="employeeTimeSheet.HourRate" /></td>
+                <td><input [disabled]="!employeeTimeSheet.Checked" type="number" [(ngModel)]="employeeTimeSheet.Hours" /></td>
+                <td>{{employeeTimeSheet.Hours * employeeTimeSheet.HourRate}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-default"
+                [disabled]="!employeeForm.form.valid">
+            Submit
+        </button>
+    </form>
+</div>

@@ -17,7 +17,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     private _isNew: Boolean = false;
     private _firstName: string;
     private active = true;
-    private form: ControlGroup;
+    private _form: ControlGroup;
     firstName: Control = new Control("", Validators.required);
 
     constructor(private employeeService: EmployeeService,
@@ -25,7 +25,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
         private _router: Router,
         private _dialog: DialogService,
         private _fb: FormBuilder) {
-        this.form = _fb.group(
+        this._form = _fb.group(
             {
                 firstName: this.firstName,
                 lastName: [''],
@@ -39,7 +39,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
 
     routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
          //Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged.
-        if (this.submitted || !this.employee || !this.form.dirty) {
+        if (this.submitted || !this.employee || !this._form.dirty) {
             return true;
         }
         // Otherwise ask the user with the dialog service and return its
@@ -84,7 +84,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
         }
     }
     test() {
-       alert(this.form.dirty);
+        alert(this._form.dirty);
     }
     afterSubmit() {
         this.submitted = true;

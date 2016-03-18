@@ -9,6 +9,10 @@ var typescript = require('gulp-typescript');
 var inlineNg2Template = require('gulp-inline-ng2-template');
 var sourcemaps = require('gulp-sourcemaps');
 var bower = require('gulp-bower');
+var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
+var dnx = require('gulp-dnx');
+var useref = require('gulp-useref');
 
 var project = require("./project.json");
 var webroot = "./wwwroot/";
@@ -29,6 +33,10 @@ var config = {
     ]
 };
 
+gulp.task('clean', function () {
+    return del([webroot + 'lib']);
+});
+
 gulp.task('build.lib', function () {
     return gulp.src(config.lib, { base: config.libBase })
         .pipe(gulp.dest(webroot + 'lib'));
@@ -45,18 +53,61 @@ gulp.task('build-prod', ['build.lib'], function () {
         .pipe(gulp.dest(webroot));
 });
 
+gulp.task('build-dev', ['build.lib'], function () {
+
+});
+
 //no called yet.
 gulp.task('bower', function () {
     return bower()
       .pipe(gulp.dest('lib/'))
 });
 
-gulp.task('build-dev', ['build.lib'], function () {
-
-});
-
-gulp.task('clean', function () {
-    return del([webroot + 'lib']);
-});
-
 gulp.task('default', ['build-dev']);
+
+gulp.task('hello', function () {
+    console.log("hello Hasan");
+});
+
+var scssRoot = webroot + 'scss/';
+gulp.task('sass', function() {
+    return gulp.src(scssRoot + '**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
+        .pipe(sass())
+        .pipe(gulp.dest(webroot + 'css'));
+    //.pipe(browserSync.reload({
+    //        stream:true
+    //    }));
+});
+
+gulp.task('watch',['sass'], function() {
+    gulp.watch(scssRoot + '**/*.scss', ['sass']);
+
+    //// Reloads the browser whenever HTML or JS files change
+    //gulp.watch('app/*.html', browserSync.reload);
+    //gulp.watch('app/js/**/*.js', browserSync.reload);
+});
+
+//gulp.task('browserSync', function() {
+//    browserSync.init(null, {
+//        proxy: "http://localhost:5000",
+//        port: 5001
+//    });
+//});
+gulp.task('browsersync', ['web'], function () {
+    browserSync.init(null, {
+        proxy: "http://localhost:5000"
+    });
+});
+
+var options = {
+    restore: false,
+    build: false,
+    run: true,
+    cwd: './'
+};
+
+gulp.task('server', dnx('web', options));
+
+gulp.task('web', function () {
+    return gulp.start('server');
+});

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Asset_CMS.Managers;
 using Tailor.DAL;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
@@ -62,6 +63,7 @@ namespace Tailor
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<EmployeeManager, EmployeeManager>();
 
             services.AddScoped<OperationService, OperationService>();
             services.AddTransient<IOperationTransient, Operation>();

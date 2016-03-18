@@ -6,11 +6,13 @@ import {FormBuilder} from 'angular2/common';
 import { Http, HTTP_BINDINGS } from 'angular2/http';
 import { AppComponent } from './app.component';
 import { EmployeeService } from './employee/employee.service'
+import { EmployeeTimeSheetService } from "./employee-time-sheet/employee-time-sheet.service"
 import 'rxjs/Rx';
 
 bootstrap(AppComponent, [
-    ROUTER_PROVIDERS, ROUTER_DIRECTIVES,
+    ROUTER_PROVIDERS,ROUTER_DIRECTIVES,
     HTTP_BINDINGS,
     FormBuilder,
-    EmployeeService
+    EmployeeService,
+    EmployeeTimeSheetService
     ]);

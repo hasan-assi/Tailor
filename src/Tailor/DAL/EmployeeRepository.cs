@@ -10,7 +10,7 @@ namespace Tailor.Models
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private  ConcurrentDictionary<string, Employee> _assets = new ConcurrentDictionary<string, Employee>();
+        //private  ConcurrentDictionary<string, Employee> _assets = new ConcurrentDictionary<string, Employee>();
         private TailorDbContext _db;
 
         public EmployeeRepository(TailorDbContext db)
@@ -18,37 +18,37 @@ namespace Tailor.Models
             _db = db;
         }
 
-        public IEnumerable<Employee> GetAll()
+        public IEnumerable<Employee> GetAllEmployees()
         {
-            return _db.Employees.ToList();
+            return _db.Employees.AsNoTracking().ToList();
         }
 
-        public void Add(Employee employee)
+        public void AddEmployee(Employee employee)
         {
             _db.Employees.Add(employee);
            Save();
         }
 
-        public Employee Find(int id)
+        public Employee FindEmployee(int id)
         {
-            var asset = _db.Employees.FirstOrDefault(x => x.Id == id);
-            _db.Detach(asset);
-            return asset;
+            var employee = _db.Employees.FirstOrDefault(x => x.Id == id);
+            _db.Detach(employee);
+            return employee;
         }
 
-        public void Remove(int id)
+        public void RemoveEmployee(int id)
         {
             _db.Employees.Remove(new Employee() {Id = id});
             Save();
         }
 
-        public void Update(Employee employee)
+        public void UpdateEmployee(Employee employee)
         {
             _db.Entry(employee).State = EntityState.Modified;
             Save();
         }
 
-        private void Save()
+        public void Save()
         {
             _db.SaveChanges();
         }
@@ -57,5 +57,56 @@ namespace Tailor.Models
         {
             return _db.SaveChangesAsync();
         }
+
+        public void AddEmployeeTimeSheet(EmployeeTimeSheet timeSheet)
+        {
+            _db.EmployeeTimeSheet.Add(timeSheet);
+            Save();
+        }
+
+        public IEnumerable<EmployeeTimeSheet> GetAllEmployeesTimeSheets()
+        {
+            return _db.EmployeeTimeSheet.ToList();
+        }
+
+        public IEnumerable<EmployeeTimeSheet> GetAllEmployeeTimeSheet(int employeeId)
+        {
+            return _db.EmployeeTimeSheet.Where(x => x.Employee.Id == employeeId).ToList();
+        }
+
+        public IEnumerable<EmployeeTimeSheet> GetEmployeesTimeSheetsByDate(DateTime date)
+        {
+            return _db.EmployeeTimeSheet.Include(x=>x.Employee).AsNoTracking().Where(x => x.Date.Date == date.Date).ToList();
+        }
+
+        public void AddEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> timeSheets)
+        {
+            _db.EmployeeTimeSheet.AddRange(timeSheets);
+
+        }
+
+       public void UpdateEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> timeSheets)
+        {
+           try
+           {
+                foreach (var employeeTimeSheet in timeSheets)
+                {
+                    _db.Entry(employeeTimeSheet).State = EntityState.Modified;
+                }
+                _db.EmployeeTimeSheet.UpdateRange(timeSheets);
+            }
+           catch (Exception ex)
+           {
+               throw;
+           }
+
+        }
+
+        public void RemoveEmployeesTimesSheets(IEnumerable<EmployeeTimeSheet> timeSheets)
+        {
+            _db.RemoveRange(timeSheets);
+
+        }
+
     }
 }

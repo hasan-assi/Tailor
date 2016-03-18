@@ -1,4 +1,4 @@
-﻿{
+{
     "webroot": "wwwroot",
     "userSecretsId": "aspnet5-Tailor-74518d02-f239-45a5-9320-836c65e2114e",
     "version": "1.0.0-*",
@@ -32,7 +32,11 @@
     },
 
     "frameworks": {
-        "dnx451": { },
+        "dnx451": {
+            "dependencies": {
+                "TypeLite": "1.6.0"
+            }
+        },
         "dnxcore50": { }
     },
 

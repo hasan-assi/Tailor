@@ -6,8 +6,9 @@ export class Employee {
         public FirstName: string,
         public LastName: string,
         public HourRate: number,
-        public HourPerDay: number) {
-        
+        public HourPerDay: number,
+        public Checked?: boolean) {
+
     }
 
 }
