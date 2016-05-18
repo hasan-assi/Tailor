@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_1 = require('@angular/router');
 var routes_config_1 = require('../routes.config');
-var employees_component_1 = require("../employee/employees.component");
+var Index_1 = require("../employee/Index");
 var HomeComponent = (function () {
     function HomeComponent(_router) {
         this._router = _router;
@@ -24,7 +24,7 @@ var HomeComponent = (function () {
         core_1.Component({
             selector: 'home',
             templateUrl: './app/home/home.component.html',
-            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, employees_component_1.EmployeesComponent]
+            directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, router_1.ROUTER_DIRECTIVES, Index_1.EmployeesComponent]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], HomeComponent);

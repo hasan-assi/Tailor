@@ -5,14 +5,14 @@ var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
-var employee_service_1 = require('./employee/employee.service');
-var employee_time_sheet_service_1 = require("./employee-time-sheet/employee-time-sheet.service");
+var Index_1 = require('./employee/Index');
+var Index_2 = require("./employee-time-sheet/Index");
 require('rxjs/Rx');
 platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     router_1.ROUTER_PROVIDERS,
     http_1.HTTP_BINDINGS,
     common_1.FormBuilder,
-    employee_service_1.EmployeeService,
-    employee_time_sheet_service_1.EmployeeTimeSheetService
+    Index_1.EmployeeService,
+    Index_2.EmployeeTimeSheetService
 ]);
 //# sourceMappingURL=bootstrap.js.map

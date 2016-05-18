@@ -1,6 +1,6 @@
 ﻿import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Injectable} from '@angular/core';
-import {EmployeeTimeSheet} from "./employee-time-sheet";
+import {EmployeeTimeSheet} from "./Index";
 import {Observable}     from 'rxjs/Observable';
 
 /**

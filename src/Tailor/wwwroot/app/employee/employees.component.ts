@@ -1,8 +1,7 @@
 ﻿import {Component, OnInit, Pipe} from '@angular/core';
 import {Router} from '@angular/router';
 import {TailorRoutes} from "../routes.config";
-import {EmployeeService} from './employee.service';
-import {Employee } from "./employee";
+import {EmployeeService, Employee} from './Index';
 
 @Component({
     selector: 'employees',

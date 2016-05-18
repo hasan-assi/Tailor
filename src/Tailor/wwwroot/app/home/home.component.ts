@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {Router, ROUTER_DIRECTIVES} from '@angular/router';
 import {TailorRoutes} from '../routes.config';
-import {EmployeesComponent} from "../employee/employees.component";
+import {EmployeesComponent} from "../employee/Index";
 
 @Component({
 	selector: 'home',

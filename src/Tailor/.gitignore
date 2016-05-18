@@ -1,0 +1,7 @@
+typings
+wwwroot/lib
+wwwroot/lib-dev
+wwwroot/app/**/*.js
+wwwroot/app/**/*.js.map
+wwwroot/
+wwwroot/css/**/*.min.css

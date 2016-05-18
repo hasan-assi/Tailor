@@ -2,10 +2,9 @@
 import {NgForm, FormBuilder, Validators, ControlGroup, Control}    from '@angular/common';
 import { Router, RouteSegment} from '@angular/router';
 import {RouteParams, ComponentInstruction, CanDeactivate} from '@angular/router-deprecated';
-import {TailorRoutes} from "../routes.config"
-import {EmployeeService } from './employee.service';
-import {Employee } from "./employee";
-import {DialogService} from "../blocks/dialog.service"
+import {TailorRoutes} from "../routes.config";
+import {EmployeeService, Employee } from './Index';
+import {DialogService} from "../blocks/dialog.service";
 
 @Component({
     selector: 'employee-detail-form',

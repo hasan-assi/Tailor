@@ -1,4 +1,4 @@
-﻿import {Employee} from "../employee/employee";
+﻿import {Employee} from "../employee/Index";
 
 export class EmployeeTimeSheet {
     constructor(public Id: number,

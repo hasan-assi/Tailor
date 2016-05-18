@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var routes_config_1 = require("../routes.config");
-var employee_service_1 = require('./employee.service');
+var Index_1 = require('./Index');
 var EmployeesComponent = (function () {
     function EmployeesComponent(_employeesService, _router) {
         this._employeesService = _employeesService;
@@ -48,7 +48,7 @@ var EmployeesComponent = (function () {
             selector: 'employees',
             templateUrl: './app/employee/employees.component.html'
         }), 
-        __metadata('design:paramtypes', [employee_service_1.EmployeeService, router_1.Router])
+        __metadata('design:paramtypes', [Index_1.EmployeeService, router_1.Router])
     ], EmployeesComponent);
     return EmployeesComponent;
 }());
