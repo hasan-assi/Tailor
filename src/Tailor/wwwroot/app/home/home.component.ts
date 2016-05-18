@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Routes} from '../routes.config';
+import {Component} from '@angular/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
+import {Router, ROUTER_DIRECTIVES} from '@angular/router';
+import {TailorRoutes} from '../routes.config';
 import {EmployeesComponent} from "../employee/employees.component";
 
 @Component({
@@ -15,7 +15,7 @@ export class HomeComponent{
 	}
 
     goToAssets(){
-        this._router.navigate([`/${Routes.employees.name}`, {}]);
+        this._router.navigate([`/${TailorRoutes.employees.name}`, {}]);
     }
 
 }

@@ -32,12 +32,11 @@
     },
 
     "frameworks": {
-        "dnx451": {
+        "dnx46": {
             "dependencies": {
                 "TypeLite": "1.6.0"
             }
-        },
-        "dnxcore50": { }
+        }
     },
 
     "exclude": [

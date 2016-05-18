@@ -1,6 +1,6 @@
-﻿import {Component, OnInit, Pipe} from 'angular2/core';
-import {Router} from 'angular2/router';
-import {Routes} from "../routes.config";
+﻿import {Component, OnInit, Pipe} from '@angular/core';
+import {Router} from '@angular/router';
+import {TailorRoutes} from "../routes.config";
 import {EmployeeService} from './employee.service';
 import {Employee } from "./employee";
 
@@ -27,11 +27,11 @@ export class EmployeesComponent implements OnInit {
             error => this.erroMessage = <any>error);
     }
     goToDetail(employee: Employee) {
-        this._router.navigate([`/${Routes.employeeDetail.name}`, { id: employee.Id }]);
+        this._router.navigate([`/${TailorRoutes.employeeDetail.path}`, { id: employee.Id }]);
     }
 
     newEmployee() {
-        this._router.navigate([`/${Routes.employeeNew.name}`]);
+        this._router.navigate([`/${TailorRoutes.employeeNew.path}`]);
     }
 
     deleteEmployee(employeeId:number) {

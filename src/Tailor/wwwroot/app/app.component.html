@@ -11,9 +11,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="[routes.home.name]">Home</a></li>
-                <li><a [routerLink]="[routes.employees.name]">Employees</a></li>
-                <li><a [routerLink]="[routes.employeesTimeSheets.name]">Employees Time Sheets</a></li>
+                <li><a [routerLink]="[routes.home.path]">Home</a></li>
+                <li><a [routerLink]="[routes.employees.path]">Employees</a></li>
+                <li><a [routerLink]="[routes.employeesTimeSheets.path]">Employees Time Sheets</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
@@ -26,8 +26,8 @@
     <div class="row">
         <div class=" col-lg-2 col-md-2">
             <ul class="nav nav-sidebar">
-                <li class="active"><a [routerLink]="[routes.home.name]">Home<span class="sr-only">(current)</span></a></li>
-                <li><a [routerLink]="[routes.employees.name]">Employees</a></li>
+                <li class="active"><a [routerLink]="[routes.home.path]">Home<span class="sr-only">(current)</span></a></li>
+                <li><a [routerLink]="[routes.employees.path]">Employees</a></li>
             </ul>
         </div>
         <div class="col-lg-10 col-md10 ">

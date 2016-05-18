@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Routes, APP_ROUTES} from './routes.config';
+import {Component} from '@angular/core';
+import {Routes, ROUTER_DIRECTIVES} from '@angular/router';
+import {TailorRoutes, APP_ROUTES} from './routes.config';
 import {DialogService} from "./blocks/dialog.service"
 import 'rxjs/add/operator/map';
 
@@ -11,8 +11,8 @@ import 'rxjs/add/operator/map';
     directives: [ROUTER_DIRECTIVES],
     providers: [DialogService]
 })
-@RouteConfig(APP_ROUTES)
+@Routes(APP_ROUTES)
 export class AppComponent {
-    public routes = Routes;
+    public routes = TailorRoutes;
 }
 

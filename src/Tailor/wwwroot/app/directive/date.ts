@@ -1,6 +1,6 @@
 ﻿//http://plnkr.co/edit/BK6q5dTenMwxSRq3f8JX?p=preview
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core';
-import {NgFor, NgModel} from 'angular2/common';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {NgFor, NgModel} from '@angular/common';
 @Component({
     selector: 'my-date',
     //events: ['dateChange'],
@@ -14,7 +14,7 @@ export class MyDate {
     @Output() dateChange: EventEmitter<Date>;
     constructor() {
         this.date = new Date();
-        this.dateChange = new EventEmitter();
+        this.dateChange = new EventEmitter<Date>();
     }
 
     private toDateString(date: Date): string {

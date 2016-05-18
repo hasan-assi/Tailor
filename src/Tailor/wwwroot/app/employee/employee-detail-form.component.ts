@@ -1,7 +1,8 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {NgForm, FormBuilder, Validators, ControlGroup, Control}    from 'angular2/common';
-import {RouteParams, Router, CanDeactivate, ComponentInstruction} from 'angular2/router';
-import {Routes} from "../routes.config"
+﻿import {Component, OnInit} from '@angular/core';
+import {NgForm, FormBuilder, Validators, ControlGroup, Control}    from '@angular/common';
+import { Router, RouteSegment} from '@angular/router';
+import {RouteParams, ComponentInstruction, CanDeactivate} from '@angular/router-deprecated';
+import {TailorRoutes} from "../routes.config"
 import {EmployeeService } from './employee.service';
 import {Employee } from "./employee";
 import {DialogService} from "../blocks/dialog.service"
@@ -21,7 +22,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     firstName: Control = new Control("", Validators.required);
 
     constructor(private employeeService: EmployeeService,
-        private _routeParams: RouteParams,
+        private _routeParams: RouteSegment,
         private _router: Router,
         private _dialog: DialogService,
         private _fb: FormBuilder) {
@@ -49,7 +50,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
 
     ngOnInit() {
         if (!this.employee) {
-            let id = +this._routeParams.get('id');
+            let id = +this._routeParams.getParam('id');
             if (id > 0) {
                 this._isNew = false;
                 this.employeeService.getEmployee(id).subscribe(res => {
@@ -88,7 +89,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
     }
     afterSubmit() {
         this.submitted = true;
-        this._router.navigate([`/${Routes.employees.name}`]);
+        this._router.navigate([`/${TailorRoutes.employees.path}`]);
     }
 
     // Reveal in html:
