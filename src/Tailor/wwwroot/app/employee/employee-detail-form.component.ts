@@ -30,6 +30,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
                 firstName: this.firstName,
                 lastName: [''],
                 cardNo: ['', Validators.required],
+                dailyWage: ['', Validators.required],
                 hourRate: ['', Validators.required],
                 hourPerDay: ['', Validators.required]
             }
@@ -61,7 +62,7 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
             }
             else //new
             {
-                this.employee = new Employee(0,'','','',0,0);
+                this.employee = new Employee(0,'','','',0,0,0);
                 this._isNew = true;
 
                 this.active = false;
@@ -90,7 +91,11 @@ export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
         this.submitted = true;
         this._router.navigate([`/${TailorRoutes.employees.path}`]);
     }
-
+    calculateHourRate(emp: Employee, dailyWage: number, hourPerDay:number ) {
+        emp.DailyWage = dailyWage;
+        emp.HourPerDay = hourPerDay
+        emp.HourRate = emp.DailyWage / emp.HourPerDay;
+    }
     // Reveal in html:
     //   AlterEgo via form.controls = {{showFormControls(hf)}}
     //showFormControls(form: NgForm) {

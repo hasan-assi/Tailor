@@ -27,10 +27,10 @@ namespace Tailor.Controllers
         [HttpGet("{id}",Name = "GetEmployee")]
         public IActionResult GetByEmployeeId(int id)
         {
-            var asset = EmployeeRepository.FindEmployee(id);
-            if (asset == null) return HttpNotFound();
+            var emp = EmployeeRepository.FindEmployee(id);
+            if (emp == null) return HttpNotFound();
   
-            return new ObjectResult(asset);
+            return new ObjectResult(emp);
         }
 
         [HttpPost]

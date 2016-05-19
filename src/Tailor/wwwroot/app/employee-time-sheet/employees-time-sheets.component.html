@@ -12,7 +12,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th><input type="checkbox" [indeterminate] = "isSelectAllIntermediate" (click)="onSelectAll($event.target.checked)" [(ngModel)] ="selectAll"/></th>
+                <th><input type="checkbox" [indeterminate] = "isSelectAllIntermediate" (click)="onSelectAll($event.target.text)" [(ngModel)] ="selectAll"/></th>
                 <th>Name</th>
                 <th>Hour Rate</th>
                 <th>Hour Per Day</th>
@@ -23,7 +23,7 @@
             <tbody *ngFor="#employeeTimeSheet of _employeesTimeSheets">
             <tr>
                 <th scope="row">
-                    <input type="checkbox" [(ngModel)]="employeeTimeSheet.Checked" (change)="isSelectAllIndeterminate(employeeTimeSheet, $event.target.checked)"/>
+                    <input type="checkbox" [(ngModel)]="employeeTimeSheet.Checked" (change)="isSelectAllIndeterminate(employeeTimeSheet, $event.target.text)"/>
                 </th>
                 <td>{{employeeTimeSheet.Employee.FirstName}} {{employeeTimeSheet.Employee.LastName}} </td>
                 <td><input [disabled] ="!employeeTimeSheet.Checked" type="number" [(ngModel)]="employeeTimeSheet.HourRate" /></td>

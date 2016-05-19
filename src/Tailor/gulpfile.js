@@ -15,7 +15,23 @@ var dnx = require('gulp-dnx');
 var useref = require('gulp-useref');
 
 var project = require("./project.json");
-var webroot = "./wwwroot/";
+
+var paths = {
+    webroot: "./wwwroot/",
+    webrootLibDev: "./wwwroot/lib-dev",
+    webrootLib: "./wwwroot/lib"
+};
+var webroot = paths.webroot;
+
+paths.cleanjsmap = paths.webroot + "app/**/*.js.map";
+paths.cleanjs = paths.webroot + "app/**/*.js";
+paths.ts = paths.webroot + "**/*.ts";
+paths.js = paths.webroot + "js/**/*.js";
+paths.minJs = paths.webroot + "js/**/*.min.js";
+paths.css = paths.webroot + "css/**/*.css";
+paths.minCss = paths.webroot + "css/**/*.min.css";
+paths.concatJsDest = paths.webroot + "js/site.min.js";
+paths.concatCssDest = paths.webroot + "css/site.min.css";
 
 var config = {
     libBase: 'node_modules',
@@ -29,8 +45,24 @@ var config = {
     ]
 };
 
-gulp.task('clean', function () {
-    return del([webroot + 'lib']);
+
+
+gulp.task("clean:js", function (cb) {
+    del([paths.concatJsDest, paths.cleanjsmap, paths.cleanjs], cb);
+});
+
+gulp.task("clean:css", function (cb) {
+    del(paths.concatCssDest, cb);
+});
+
+gulp.task("clean", ["clean:js", "clean.lib-dev", "clean.lib"]);
+
+gulp.task("clean.lib-dev", function () {
+    del(paths.webrootLibDev);
+});
+
+gulp.task('clean.lib', function () {
+    return del(paths.webrootLib);
 });
 
 gulp.task('build.lib', function () {

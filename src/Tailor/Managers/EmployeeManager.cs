@@ -33,7 +33,7 @@ namespace Asset_CMS.Managers
                         Employee = employee,
                         HourRate = employee.HourRate,
                         Hours = employee.HourPerDay,
-                        Wage = employee.HourRate * employee.HourPerDay,
+                        Wage = employee.DailyWage,
                         Checked = false
                     });
                 }

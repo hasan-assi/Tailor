@@ -29,6 +29,7 @@ var EmployeeDetailFormComponent = (function () {
             firstName: this.firstName,
             lastName: [''],
             cardNo: ['', common_1.Validators.required],
+            dailyWage: ['', common_1.Validators.required],
             hourRate: ['', common_1.Validators.required],
             hourPerDay: ['', common_1.Validators.required]
         });
@@ -53,7 +54,7 @@ var EmployeeDetailFormComponent = (function () {
                 }, function (err) { return console.log(err); });
             }
             else {
-                this.employee = new Index_1.Employee(0, '', '', '', 0, 0);
+                this.employee = new Index_1.Employee(0, '', '', '', 0, 0, 0);
                 this._isNew = true;
                 this.active = false;
                 setTimeout(function () { return _this.active = true; }, 0);
@@ -75,6 +76,11 @@ var EmployeeDetailFormComponent = (function () {
     EmployeeDetailFormComponent.prototype.afterSubmit = function () {
         this.submitted = true;
         this._router.navigate([("/" + routes_config_1.TailorRoutes.employees.path)]);
+    };
+    EmployeeDetailFormComponent.prototype.calculateHourRate = function (emp, dailyWage, hourPerDay) {
+        emp.DailyWage = dailyWage;
+        emp.HourPerDay = hourPerDay;
+        emp.HourRate = emp.DailyWage / emp.HourPerDay;
     };
     Object.defineProperty(EmployeeDetailFormComponent.prototype, "diagnostic", {
         // Reveal in html:

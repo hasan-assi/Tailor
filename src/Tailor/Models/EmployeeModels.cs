@@ -18,6 +18,9 @@ namespace Tailor.Models
         public string CardNo { set; get; }
         public string FirstName { set; get; }
         public string LastName { set; get; }
+
+        [Required]
+        public decimal DailyWage { set; get; }
         [Required]
         public decimal HourRate { set; get; }
         [Required]
