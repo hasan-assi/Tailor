@@ -3,7 +3,8 @@ import {NgForm, FormBuilder, Validators, ControlGroup, Control}    from '@angula
 import {RouteParams, Router, CanDeactivate, ComponentInstruction} from '@angular/router-deprecated';
 import {TailorRoutes} from "../routes.config"
 import {EmployeeService, Employee } from "../employee/Index";
-import {EmployeeTimeSheet, EmployeeTimeSheetService } from "./Index";
+import {EmployeeTimeSheetService } from "./employee-time-sheet.service";
+import {EmployeeTimeSheet } from "./employee-time-sheet";
 import {DialogService} from "../blocks/dialog.service"
 import {MyDate} from "../directive/date"
 
@@ -40,7 +41,10 @@ export class EmployeesTimeSheetsComponent implements OnInit {
 
     private load() {
         this._empTimeSheetService.getEmployeesTimeSheets(this._date).subscribe(
-            res=> this._employeesTimeSheets = res,
+            res => {
+                this._employeesTimeSheets = res;
+                this.isSelectAllIndeterminate();
+            },
             err => console.log(err)
         );
     }
@@ -80,9 +84,11 @@ export class EmployeesTimeSheetsComponent implements OnInit {
         this._employeesTimeSheets.forEach(x=> x.Checked = selectAll);
     }
 
-    isSelectAllIndeterminate(emp: EmployeeTimeSheet, checkedValue: boolean) {
-
+    onEmpTimesheetSelect(emp: EmployeeTimeSheet, checkedValue: boolean) {
         emp.Checked = checkedValue;
+        this.isSelectAllIndeterminate();
+    }
+    isSelectAllIndeterminate() {
 
         if (this._employeesTimeSheets.filter((x: EmployeeTimeSheet) => x.Checked).length == 0) {
             this.isSelectAllIntermediate = false;

@@ -1,7 +1,7 @@
+import { Route, Router } from '@angular/router-deprecated';
 import { HomeComponent } from './home/home.component';
 import { EmployeesComponent, EmployeeDetailFormComponent} from "./employee/Index";
 import { EmployeesTimeSheetsComponent } from "./employee-time-sheet/Index";
-import { Route, Router } from '@angular/router-deprecated';
 
 export var TailorRoutes = {
     employees: new Route({

@@ -71,10 +71,10 @@ gulp.task('build.lib', function () {
 });
 
 gulp.task('build-prod', ['build.lib'], function () {
-    var tsProject = typescript.createProject('./tsconfig.json', { typescript: require('typescript') });
+    var tsProject = typescript.createProject('./tsconfig.json', { typescript: require('typescript')    });
     var tsSrcInlined = gulp.src([webroot + '**/*.ts'], { base: webroot })
         .pipe(inlineNg2Template({ base: webroot }));
-    return eventStream.merge(tsSrcInlined, gulp.src('Typings/**/*.ts'))
+    return eventStream.merge(tsSrcInlined)
         .pipe(sourcemaps.init())
         .pipe(typescript(tsProject))
         .pipe(sourcemaps.write())

@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var Index_1 = require("./Index");
+var employee_time_sheet_service_1 = require("./employee-time-sheet.service");
 var dialog_service_1 = require("../blocks/dialog.service");
 var date_1 = require("../directive/date");
 var EmployeesTimeSheetsComponent = (function () {
@@ -32,7 +32,10 @@ var EmployeesTimeSheetsComponent = (function () {
     };
     EmployeesTimeSheetsComponent.prototype.load = function () {
         var _this = this;
-        this._empTimeSheetService.getEmployeesTimeSheets(this._date).subscribe(function (res) { return _this._employeesTimeSheets = res; }, function (err) { return console.log(err); });
+        this._empTimeSheetService.getEmployeesTimeSheets(this._date).subscribe(function (res) {
+            _this._employeesTimeSheets = res;
+            _this.isSelectAllIndeterminate();
+        }, function (err) { return console.log(err); });
     };
     EmployeesTimeSheetsComponent.prototype.onSubmit = function () {
         //let empsTimeSheets: EmployeeTimeSheet[] = [];
@@ -62,8 +65,11 @@ var EmployeesTimeSheetsComponent = (function () {
     EmployeesTimeSheetsComponent.prototype.onSelectAll = function (selectAll) {
         this._employeesTimeSheets.forEach(function (x) { return x.Checked = selectAll; });
     };
-    EmployeesTimeSheetsComponent.prototype.isSelectAllIndeterminate = function (emp, checkedValue) {
+    EmployeesTimeSheetsComponent.prototype.onEmpTimesheetSelect = function (emp, checkedValue) {
         emp.Checked = checkedValue;
+        this.isSelectAllIndeterminate();
+    };
+    EmployeesTimeSheetsComponent.prototype.isSelectAllIndeterminate = function () {
         if (this._employeesTimeSheets.filter(function (x) { return x.Checked; }).length == 0) {
             this.isSelectAllIntermediate = false;
             this.selectAll = false;
@@ -86,7 +92,7 @@ var EmployeesTimeSheetsComponent = (function () {
             directives: [date_1.MyDate],
             templateUrl: 'app/employee-time-sheet/employees-time-sheets.component.html'
         }), 
-        __metadata('design:paramtypes', [dialog_service_1.DialogService, Index_1.EmployeeTimeSheetService, common_1.FormBuilder])
+        __metadata('design:paramtypes', [dialog_service_1.DialogService, employee_time_sheet_service_1.EmployeeTimeSheetService, common_1.FormBuilder])
     ], EmployeesTimeSheetsComponent);
     return EmployeesTimeSheetsComponent;
 }());
