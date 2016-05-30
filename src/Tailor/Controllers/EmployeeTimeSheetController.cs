@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asset_CMS.Managers;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Tailor.Models;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace Tailor.Controllers
 {
@@ -26,7 +26,7 @@ namespace Tailor.Controllers
         public IActionResult GetEmployeesTimeSheetsByDate(DateTime date)
         {
             var empTimeSheet = this._employeeManager.GetEmployeesTimeSheetsByDate(date);
-            if (empTimeSheet == null) return HttpNotFound();
+            if (empTimeSheet == null) return NotFound();
 
             return new ObjectResult(empTimeSheet);
         }
@@ -34,7 +34,7 @@ namespace Tailor.Controllers
         [HttpPost("{date}")]
         public IActionResult Create ([FromBody]IEnumerable< EmployeeTimeSheet> employeesTimeSheets, [FromRoute] DateTime date)
         {
-            if (employeesTimeSheets == null) return HttpBadRequest();
+            if (employeesTimeSheets == null) return BadRequest();
             this._employeeManager.CreateEmployeesTimeSheets(employeesTimeSheets, date);
             return CreatedAtRoute("GetEmployeesTimeSheetsByDate", new {controller = "EmployeeTimeSheet", date = date }, employeesTimeSheets);
         }

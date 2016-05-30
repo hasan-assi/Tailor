@@ -4,12 +4,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Tailor;
 using Tailor.Models;
 using Tailor.Services;
@@ -181,7 +181,7 @@ namespace Tailor.Controllers
                 // If the user does not have an account, then ask the user to create an account.
                 ViewData["ReturnUrl"] = returnUrl;
                 ViewData["LoginProvider"] = info.LoginProvider;
-                var email = info.ExternalPrincipal.FindFirstValue(ClaimTypes.Email);
+                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = email });
             }
         }
@@ -193,7 +193,7 @@ namespace Tailor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
         {
-            if (User.IsSignedIn())
+            if (_signInManager.IsSignedIn(User))
             {
                 return RedirectToAction(nameof(ManageController.Index), "Manage");
             }

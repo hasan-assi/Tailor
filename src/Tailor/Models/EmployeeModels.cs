@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tailor.Models
 {
+    [Table("Employee")]
     public class Employee
     {
 

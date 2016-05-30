@@ -43,15 +43,7 @@ namespace Asset_CMS.Managers
 
         public void CreateEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> employeesTimeSheets, DateTime date)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+           
             var savedEmployeesTimeSheets = this._employeeRepository.GetEmployeesTimeSheetsByDate(date);
             IList<EmployeeTimeSheet> toDelete = new List<EmployeeTimeSheet>();
             IList<EmployeeTimeSheet> toUpdate = new List<EmployeeTimeSheet>();
@@ -79,10 +71,20 @@ namespace Asset_CMS.Managers
                     }
                 }
             }
-            this._employeeRepository.AddEmployeesTimeSheets(toAdd);
-            this._employeeRepository.UpdateEmployeesTimeSheets(toUpdate);
-            this._employeeRepository.RemoveEmployeesTimesSheets(toDelete);
-            this._employeeRepository.Save();
+
+            try
+            {
+                this._employeeRepository.AddEmployeesTimeSheets(toAdd);
+                this._employeeRepository.UpdateEmployeesTimeSheets(toUpdate);
+                this._employeeRepository.RemoveEmployeesTimesSheets(toDelete);
+                this._employeeRepository.Save();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

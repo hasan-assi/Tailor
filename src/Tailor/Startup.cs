@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Asset_CMS.Managers;
 using Tailor.DAL;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,17 +20,20 @@ namespace Tailor
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        public Startup(IHostingEnvironment env)
         {
+            //throw new Exception();
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
             if (env.IsDevelopment())
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
+                //builder.AddUserSecrets();
             }
 
             builder.AddEnvironmentVariables();
@@ -45,12 +48,10 @@ namespace Tailor
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:IdentityConnection:ConnectionString"])).
-                AddDbContext<TailorDbContext>(
+            services.AddDbContext<TailorDbContext>(
                     option => option.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+            //.AddDbContext<ApplicationDbContext>(options =>
+            //        options.UseSqlServer(Configuration["Data:IdentityConnection:ConnectionString"])).
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -69,7 +70,7 @@ namespace Tailor
             services.AddTransient<IOperationTransient, Operation>();
             services.AddScoped<IOperationScoped, Operation>();
             services.AddSingleton<IOperationSingleton, Operation>();
-            services.AddInstance<IOperationInstance>(new Operation());
+            //services.AddInstance<IOperationInstance>(new Operation());
 
         }
 
@@ -77,12 +78,12 @@ namespace Tailor
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            //loggerFactory.AddDebug();
             
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -101,7 +102,7 @@ namespace Tailor
                 catch { }
             }
 
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
+            //app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
        
             app.UseStaticFiles();
 
@@ -118,6 +119,6 @@ namespace Tailor
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
+        //public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
     }
 }

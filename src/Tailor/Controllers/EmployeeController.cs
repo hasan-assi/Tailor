@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Tailor.Models;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace Tailor.Controllers
 {
@@ -28,7 +28,7 @@ namespace Tailor.Controllers
         public IActionResult GetByEmployeeId(int id)
         {
             var emp = EmployeeRepository.FindEmployee(id);
-            if (emp == null) return HttpNotFound();
+            if (emp == null) return NotFound();
   
             return new ObjectResult(emp);
         }
@@ -36,7 +36,7 @@ namespace Tailor.Controllers
         [HttpPost]
         public IActionResult Create ([FromBody]Employee employee)
         {
-            if (employee == null) return HttpBadRequest();
+            if (employee == null) return BadRequest();
             EmployeeRepository.AddEmployee(employee);
             return CreatedAtRoute("GetEmployee", new {controller = "Employee", id = employee.Id}, employee);
         }
@@ -44,9 +44,9 @@ namespace Tailor.Controllers
 	    [HttpPut("{id}", Name = "UpdateAsset")]
 	    public IActionResult Update(int id, [FromBody] Employee employee)
 	    {
-	        if (employee == null || employee.Id != id) return HttpBadRequest();
+	        if (employee == null || employee.Id != id) return BadRequest();
 	        var item = EmployeeRepository.FindEmployee(id);
-	        if (item == null) return HttpNotFound();
+	        if (item == null) return NotFound();
             EmployeeRepository.UpdateEmployee(employee);
 
             //return CreatedAtRoute("GetEmployee", new {controller = "Employee", id = Employee.Id}, Employee);

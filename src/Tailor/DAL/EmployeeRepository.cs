@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using Tailor.DAL;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Tailor.Models
 {
@@ -81,6 +81,10 @@ namespace Tailor.Models
 
         public void AddEmployeesTimeSheets(IEnumerable<EmployeeTimeSheet> timeSheets)
         {
+            foreach (var employeeTimeSheet in timeSheets)
+            {
+                _db.Entry(employeeTimeSheet.Employee).State = EntityState.Unchanged;
+            }
             _db.EmployeeTimeSheet.AddRange(timeSheets);
 
         }
@@ -95,7 +99,7 @@ namespace Tailor.Models
                 }
                 _db.EmployeeTimeSheet.UpdateRange(timeSheets);
             }
-           catch (Exception ex)
+           catch
            {
                throw;
            }

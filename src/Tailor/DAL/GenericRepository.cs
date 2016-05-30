@@ -5,7 +5,7 @@
 //using System.Linq;
 //using System.Linq.Expressions;
 //using System.Data;
-//using Microsoft.Data.Entity;
+//using Microsoft.EntityFrameworkCore;
 //using System.Threading.Tasks;
 //using Tailor.DAL;
 
