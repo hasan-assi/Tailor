@@ -1,16 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24627.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C54424C3-48CF-41B8-AE9A-6D95799C1C80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{300F6D20-4AFF-4C2E-A5FE-811C01F66288}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tailor", "src\Tailor\Tailor.xproj", "{07CDD490-0981-40F8-9042-D94F84868439}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{36E4D4D5-AB72-4956-A8C6-833F18DA0909}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 	ProjectSection(SolutionItems) = preProject
 		PublishScripts\Configurations\Asset-CMS-WAWS-dev.json = PublishScripts\Configurations\Asset-CMS-WAWS-dev.json
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tailor", "src\Tailor\Tailor.csproj", "{07CDD490-0981-40F8-9042-D94F84868439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,7 +35,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{07CDD490-0981-40F8-9042-D94F84868439} = {C54424C3-48CF-41B8-AE9A-6D95799C1C80}
 		{9875C878-2E33-4F44-A31C-B87371672335} = {36E4D4D5-AB72-4956-A8C6-833F18DA0909}
+		{07CDD490-0981-40F8-9042-D94F84868439} = {C54424C3-48CF-41B8-AE9A-6D95799C1C80}
 	EndGlobalSection
 EndGlobal

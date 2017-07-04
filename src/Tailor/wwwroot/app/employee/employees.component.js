@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var routes_config_1 = require("../routes.config");
-var Index_1 = require('./Index');
+var Index_1 = require("./Index");
 var EmployeesComponent = (function () {
     function EmployeesComponent(_employeesService, _router) {
         this._employeesService = _employeesService;
@@ -26,10 +26,10 @@ var EmployeesComponent = (function () {
             .subscribe(function (res) { return _this.employees = res; }, function (error) { return _this.erroMessage = error; });
     };
     EmployeesComponent.prototype.goToDetail = function (employee) {
-        this._router.navigate([("/" + routes_config_1.TailorRoutes.employeeDetail.path), { id: employee.Id }]);
+        this._router.navigate(["/" + routes_config_1.TailorRoutes.employeeDetail.path, { id: employee.Id }]);
     };
     EmployeesComponent.prototype.newEmployee = function () {
-        this._router.navigate([("/" + routes_config_1.TailorRoutes.employeeNew.path)]);
+        this._router.navigate(["/" + routes_config_1.TailorRoutes.employeeNew.path]);
     };
     EmployeesComponent.prototype.deleteEmployee = function (employeeId) {
         this._employeesService.deleteEmployee(employeeId).subscribe();
@@ -43,14 +43,15 @@ var EmployeesComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    EmployeesComponent = __decorate([
-        core_1.Component({
-            selector: 'employees',
-            templateUrl: './app/employee/employees.component.html'
-        }), 
-        __metadata('design:paramtypes', [Index_1.EmployeeService, router_1.Router])
-    ], EmployeesComponent);
     return EmployeesComponent;
 }());
+EmployeesComponent = __decorate([
+    core_1.Component({
+        selector: 'employees',
+        templateUrl: './app/employee/employees.component.html'
+    }),
+    __metadata("design:paramtypes", [Index_1.EmployeeService,
+        router_1.Router])
+], EmployeesComponent);
 exports.EmployeesComponent = EmployeesComponent;
 //# sourceMappingURL=employees.component.js.map

@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var router_1 = require('@angular/router');
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
 var routes_config_1 = require("../routes.config");
-var Index_1 = require('./Index');
+var Index_1 = require("./Index");
 var dialog_service_1 = require("../blocks/dialog.service");
 var EmployeeDetailFormComponent = (function () {
     function EmployeeDetailFormComponent(employeeService, _routeParams, _router, _dialog, _fb) {
@@ -75,7 +75,7 @@ var EmployeeDetailFormComponent = (function () {
     };
     EmployeeDetailFormComponent.prototype.afterSubmit = function () {
         this.submitted = true;
-        this._router.navigate([("/" + routes_config_1.TailorRoutes.employees.path)]);
+        this._router.navigate(["/" + routes_config_1.TailorRoutes.employees.path]);
     };
     EmployeeDetailFormComponent.prototype.calculateHourRate = function (emp, dailyWage, hourPerDay) {
         emp.DailyWage = dailyWage;
@@ -93,14 +93,18 @@ var EmployeeDetailFormComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    EmployeeDetailFormComponent = __decorate([
-        core_1.Component({
-            selector: 'employee-detail-form',
-            templateUrl: 'app/employee/employee-detail-form.component.html'
-        }), 
-        __metadata('design:paramtypes', [Index_1.EmployeeService, router_1.RouteSegment, router_1.Router, dialog_service_1.DialogService, common_1.FormBuilder])
-    ], EmployeeDetailFormComponent);
     return EmployeeDetailFormComponent;
 }());
+EmployeeDetailFormComponent = __decorate([
+    core_1.Component({
+        selector: 'employee-detail-form',
+        templateUrl: 'app/employee/employee-detail-form.component.html'
+    }),
+    __metadata("design:paramtypes", [Index_1.EmployeeService,
+        router_1.RouteSegment,
+        router_1.Router,
+        dialog_service_1.DialogService,
+        common_1.FormBuilder])
+], EmployeeDetailFormComponent);
 exports.EmployeeDetailFormComponent = EmployeeDetailFormComponent;
 //# sourceMappingURL=employee-detail-form.component.js.map

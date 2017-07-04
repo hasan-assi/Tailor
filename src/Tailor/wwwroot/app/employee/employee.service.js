@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var http_1 = require('@angular/http');
-var core_1 = require('@angular/core');
-var Observable_1 = require('rxjs/Observable');
+var http_1 = require("@angular/http");
+var core_1 = require("@angular/core");
+var Observable_1 = require("rxjs/Observable");
 /**
  * people service
  */
@@ -57,11 +57,11 @@ var EmployeeService = (function () {
     EmployeeService.prototype.deleteEmployee = function (employeeId) {
         return this._http.delete('/api/Employee/' + employeeId.toString());
     };
-    EmployeeService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], EmployeeService);
     return EmployeeService;
 }());
+EmployeeService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], EmployeeService);
 exports.EmployeeService = EmployeeService;
 //# sourceMappingURL=employee.service.js.map

@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 //http://plnkr.co/edit/BK6q5dTenMwxSRq3f8JX?p=preview
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var MyDate = (function () {
     function MyDate() {
         this.date = new Date();
@@ -43,24 +43,24 @@ var MyDate = (function () {
             }
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Date), 
-        __metadata('design:paramtypes', [Date])
-    ], MyDate.prototype, "date", null);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], MyDate.prototype, "dateChange", void 0);
-    MyDate = __decorate([
-        core_1.Component({
-            selector: 'my-date',
-            //events: ['dateChange'],
-            template: "<input type=\"datetime-local\" [value] = \"_date\" (change) = \"onDateChange($event.target.value)\" />"
-        }), 
-        __metadata('design:paramtypes', [])
-    ], MyDate);
     return MyDate;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Date),
+    __metadata("design:paramtypes", [Date])
+], MyDate.prototype, "date", null);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], MyDate.prototype, "dateChange", void 0);
+MyDate = __decorate([
+    core_1.Component({
+        selector: 'my-date',
+        //events: ['dateChange'],
+        template: "<input type=\"datetime-local\" [value] = \"_date\" (change) = \"onDateChange($event.target.value)\" />"
+    }),
+    __metadata("design:paramtypes", [])
+], MyDate);
 exports.MyDate = MyDate;
 //# sourceMappingURL=date.js.map

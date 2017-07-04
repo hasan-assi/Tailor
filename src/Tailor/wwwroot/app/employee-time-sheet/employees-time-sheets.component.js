@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
 var employee_time_sheet_service_1 = require("./employee-time-sheet.service");
 var dialog_service_1 = require("../blocks/dialog.service");
 var date_1 = require("../directive/date");
@@ -82,19 +82,21 @@ var EmployeesTimeSheetsComponent = (function () {
             this.isSelectAllIntermediate = true;
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Date)
-    ], EmployeesTimeSheetsComponent.prototype, "_date", void 0);
-    EmployeesTimeSheetsComponent = __decorate([
-        core_1.Component({
-            selector: 'employees-time-sheets',
-            directives: [date_1.MyDate],
-            templateUrl: 'app/employee-time-sheet/employees-time-sheets.component.html'
-        }), 
-        __metadata('design:paramtypes', [dialog_service_1.DialogService, employee_time_sheet_service_1.EmployeeTimeSheetService, common_1.FormBuilder])
-    ], EmployeesTimeSheetsComponent);
     return EmployeesTimeSheetsComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Date)
+], EmployeesTimeSheetsComponent.prototype, "_date", void 0);
+EmployeesTimeSheetsComponent = __decorate([
+    core_1.Component({
+        selector: 'employees-time-sheets',
+        directives: [date_1.MyDate],
+        templateUrl: 'app/employee-time-sheet/employees-time-sheets.component.html'
+    }),
+    __metadata("design:paramtypes", [dialog_service_1.DialogService,
+        employee_time_sheet_service_1.EmployeeTimeSheetService,
+        common_1.FormBuilder])
+], EmployeesTimeSheetsComponent);
 exports.EmployeesTimeSheetsComponent = EmployeesTimeSheetsComponent;
 //# sourceMappingURL=employees-time-sheets.component.js.map
