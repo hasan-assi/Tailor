@@ -1,0 +1,58 @@
+﻿<div class="container">
+    <div [hidden]="submitted">
+        <h1>Employee Form  </h1>
+        <form (ngSubmit)="onSubmit()" *ngIf="employee" [formGroup]="_form">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" required [(ngModel)]='employee.firstName' formControlName="firstName" >
+                <!--<div [hidden]="firstName.valid" class="alert alert-danger">
+                    Name is required
+                </div>-->
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" [(ngModel)]='employee.lastName' formControlName="lastName">
+            </div>
+
+            <div class="form-group">
+                <label for="cardNo">Card No</label>
+                <input type="text" class="form-control" [(ngModel)]='employee.cardNo' formControlName="cardNo" >
+                <!--<div [hidden]="cardNo.valid" class="alert alert-danger">
+                    Card No is required
+                </div>-->
+            </div>
+
+            <div class="form-group">
+                <label for="dailyWage">Daily Wage</label>
+                <input type="number" step="any" class="form-control" [(ngModel)]='employee.dailyWage'
+                       formControlName="dailyWage" (input)="calculateHourRate(employee,$event.target.value,employee.hourPerDay)">
+                <!--<div [hidden]="dailyWage.valid" class="alert alert-danger">
+                    Daily Wage is required
+                </div>-->
+            </div>
+
+            <div class="form-group">
+                <label for="hourPerDay">Hour Per Day</label>
+                <input type="number" step="any" class="form-control" [(ngModel)]='employee.hourPerDay'
+                       formControlName="hourPerDay"  (input)="calculateHourRate(employee,employee.dailyWage,$event.target.value)">
+                <!--<div [hidden]="hourPerDay.valid" class="alert alert-danger">
+                    Hour Per Day is required
+                </div>-->
+            </div>
+
+            <div class="form-group">
+                <label for="hourRate">Hour Rate</label>
+                <input readonly="readonly" type="number" step="any" class="form-control" [(ngModel)]='employee.hourRate'
+                       formControlName="hourRate" >
+                <!--<div [hidden]="hourRate.valid" class="alert alert-danger">
+                    Hour Rate is required
+                </div>-->
+            </div>
+
+            <button type="submit" class="btn btn-default">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+

@@ -5,7 +5,7 @@ import {EmployeeService, Employee} from './Index';
 
 @Component({
     selector: 'employees',
-    templateUrl: './app/employee/employees.component.html'
+    templateUrl: 'employees.component.html'
 })
 export class EmployeesComponent implements OnInit {
     public employees: Array<Employee>;

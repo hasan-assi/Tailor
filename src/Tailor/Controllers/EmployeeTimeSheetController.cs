@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Asset_CMS.Managers;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Tailor.Models;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 namespace Tailor.Controllers
 {
 	[Route("api/[controller]")]
+	[EnableCors("AllowSpecificOrigin")]
     public class EmployeeTimeSheetController : Controller
 	{
 	    private IEmployeeRepository _employeeRepository;

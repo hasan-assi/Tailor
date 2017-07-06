@@ -59,6 +59,16 @@ namespace Tailor
 
             services.AddMvc();//.AddJsonOptions(options => options.SerializerSettings.DateFormatString ="MM/dd/yyyy");
 
+            //TODO: Remove the allow any origin after consultation with security team
+            services.AddCors
+            (options => {
+                options.AddPolicy
+                ("AllowSpecificOrigin",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();

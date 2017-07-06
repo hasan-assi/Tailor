@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Tailor.Models;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 namespace Tailor.Controllers
 {
 	[Route("api/[controller]")]
+	[EnableCors("AllowSpecificOrigin")]
     public class EmployeeController : Controller
     {
 	    private IEmployeeRepository EmployeeRepository { set; get; }

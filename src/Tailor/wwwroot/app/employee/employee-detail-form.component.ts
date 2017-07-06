@@ -8,7 +8,7 @@ import {DialogService} from "../blocks/dialog.service";
 
 @Component({
     selector: 'employee-detail-form',
-    templateUrl: 'app/employee/employee-detail-form.component.html'
+    templateUrl: 'employee-detail-form.component.html'
 })
 export class EmployeeDetailFormComponent implements OnInit, CanDeactivate  {
 
