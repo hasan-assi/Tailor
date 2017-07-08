@@ -4,9 +4,6 @@
     <div class="panel-heading">
         <button type="button" class="btn btn-primary" (click)="newEmployee()">New Employee</button>
     </div>
-    <div class="panel-body">
-        <p>Here is an example of the employees that you will see in CMS.</p>
-    </div>
 
     <!-- Table -->
     <table class="table">
@@ -21,7 +18,7 @@
         </thead>
         <tbody *ngFor="let employee of employees">
             <tr>
-                <th scope="row">{{employee.Id}}</th>
+                <th scope="row">{{employee.id}}</th>
                 <td>{{employee.cardNo}}</td>
                 <td>{{employee.firstName}}</td>
                 <td>{{employee.lastName}}</td>
@@ -34,13 +31,14 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a (click)="deleteEmployee(employee.Id)">Delete</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <li><a (click)="deleteEmployee(employee.id)">Delete</a></li>
+                            <!--<li><a href="#">Another action</a></li>-->
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <!--<li><a href="#">Separated link</a></li>-->
                         </ul>
                     </div>
                 </td>
+
             </tr>
         </tbody>
     </table>

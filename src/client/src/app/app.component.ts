@@ -9,16 +9,13 @@ import {
 import { AppState } from './app.service';
 
 import { Routes } from '@angular/router';
-import { ROUTES } from './app.routes';
 import { DialogService } from './blocks/dialog.service';
-import 'rxjs/add/operator/map';
-
 
 @Component({
     selector: 'app',
-    // templateUrl: './app/app.component.html',
+    styleUrls:['app.component.css'],
      templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    public routes = ROUTES;
+
 }

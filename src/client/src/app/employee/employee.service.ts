@@ -60,7 +60,7 @@ export class EmployeeService {
     }
     deleteEmployee(employeeId: number) {
 
-        return this._http.delete(this.baseEmployeesUrl + '/api/Employee/' + employeeId.toString());
+        return this._http.delete(this.baseEmployeesUrl + 'api/Employee/' + employeeId.toString());
     }
 
 }
