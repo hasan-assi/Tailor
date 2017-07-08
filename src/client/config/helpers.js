@@ -10,6 +10,8 @@ const EVENT = process.env.npm_lifecycle_event || '';
  */
 var ROOT = path.resolve(__dirname, '..');
 
+var dist = path.resolve(ROOT, '../Tailor/wwwroot/dist');
+
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
 }
@@ -28,3 +30,4 @@ exports.hasProcessFlag = hasProcessFlag;
 exports.hasNpmFlag = hasNpmFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;
+exports.dist = dist;

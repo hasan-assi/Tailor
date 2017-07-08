@@ -1,5 +1,6 @@
 typings
 wwwroot/lib
+wwwroot/dist
 wwwroot/lib-dev
 /wwwroot/app/**/*.js
 /wwwroot/app/**/*.js.map
