@@ -38,6 +38,7 @@ namespace Tailor
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
             //Configuration["Data:DefaultConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/yoeman_test.db";
 
         }
@@ -57,7 +58,10 @@ namespace Tailor
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();//.AddJsonOptions(options => options.SerializerSettings.DateFormatString ="MM/dd/yyyy");
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new GlobalExceptionFilter(Serilog.Log.Logger));
+            });//.AddJsonOptions(options => options.SerializerSettings.DateFormatString ="MM/dd/yyyy");
 
             //TODO: Remove the allow any origin after consultation with security team
             services.AddCors
@@ -80,6 +84,8 @@ namespace Tailor
             services.AddTransient<IOperationTransient, Operation>();
             services.AddScoped<IOperationScoped, Operation>();
             services.AddSingleton<IOperationSingleton, Operation>();
+
+            //services.AddScoped<Serilog.ILogger,Serilog.Log.Logger>();
             //services.AddInstance<IOperationInstance>(new Operation());
 
         }
@@ -88,8 +94,10 @@ namespace Tailor
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddFile("Logs/tailer-{Date}.txt");
+
             //loggerFactory.AddDebug();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -120,12 +128,14 @@ namespace Tailor
 
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
 
-            app.UseMvc(routes =>
+        var builder =     app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });     
+            });
+
+
         }
 
         // Entry point for the application.

@@ -11,8 +11,8 @@ export class EmployeeTimeSheetService {
     employeeTimeSheets:EmployeeTimeSheet[] = [];
     //   person: Person = null;
 
-    constructor(private _http: Http) { }
-    private _employeesUrl = 'http://localhost:5000/api/EmployeeTimeSheet/';
+    constructor(private _http: Http) { }b
+    private _employeesUrl = 'http://tailor/api/EmployeeTimeSheet/';
 
     //getEmployeesTimeSheet() {
     //    //return an observable

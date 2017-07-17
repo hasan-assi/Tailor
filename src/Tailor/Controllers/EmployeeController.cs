@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Tailor.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Tailor.Controllers
 {
@@ -14,15 +15,18 @@ namespace Tailor.Controllers
     public class EmployeeController : Controller
     {
 	    private IEmployeeRepository EmployeeRepository { set; get; }
+        readonly ILogger<EmployeeController> _log;
 
-	    public EmployeeController(IEmployeeRepository employeeRepository)
-	    {
+        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController>  log)
+        {
+            this._log = log;
 	        EmployeeRepository = employeeRepository;
 	    }
 
         [HttpGet]
 	    public IEnumerable<Employee> GetAll()
         {
+            _log.LogInformation("EmployeeController: GetAll() --> Retrieve all employees.");
             return EmployeeRepository.GetAllEmployees();
         }
 

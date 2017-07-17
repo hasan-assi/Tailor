@@ -12,7 +12,7 @@ export class EmployeeService {
     //   person: Person = null;
 
     constructor(private _http: Http) { }
-    private baseEmployeesUrl = 'http://localhost:5000/';
+    private baseEmployeesUrl = 'http://tailor/';
 
     getEmployees() {
         //return an observable

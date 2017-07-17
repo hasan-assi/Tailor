@@ -5,3 +5,4 @@ wwwroot/lib-dev
 /wwwroot/app/**/*.js
 /wwwroot/app/**/*.js.map
 wwwroot/css/**/*.min.css
+Logs
